@@ -1,0 +1,13 @@
+Sun Tzu dice: "Los antiguos guerreros primero se hacían invencibles a sí mismos". Nota el orden. Primero invencible. Luego victorioso. No buscas atacar bugs. Buscas crear un sistema donde los bugs no puedan esconderse.
+
+El mayor enemigo de la estabilidad es el cambio no controlado. Un servidor que lleva 2 años corriendo y ha sido parcheado 50 veces por 3 admins diferentes... es una bomba de tiempo. Es un servidor Mascota. Si muere, lloras.
+
+La estrategia moderna es la Infraestructura Inmutable. Tratamos a los servidores como ganado, no como mascotas de casa. No tienen nombres cariñosos como Zeus o Gandalf. Tienen números de serie. Worker-95. Node-33.
+
+Si Worker-95 se comporta raro, no entramos a diagnosticarle fiebre. Lo eliminamos. Y creamos Worker-96 en su lugar. Nuevo. Limpio. Idéntico al diseño original.
+
+Docker es nuestro cemento para esta fortaleza. Una imagen de Docker es una fotografía congelada de tu software. No cambia. Si hoy funciona en mi laptop, funcionará igual en el servidor de producción dentro de 5 años. Esa predicibilidad... eso es ser invencible.
+
+Nunca, jamás, entres por SSH a producción a hacer un arreglito rápido. Eso es abrir la puerta de la muralla por la noche. Si hay que arreglar, se arregla el plano, se construye una nueva muralla, y se demuele la vieja.
+
+Tu tarea: Identifica qué partes de tu sistema son Mascotas. ¿Ese servidor de base de datos que todos tienen miedo de reiniciar? Ese es tu punto débil. Hazlo inmutable. Hazlo reemplazable. Hazlo invencible.

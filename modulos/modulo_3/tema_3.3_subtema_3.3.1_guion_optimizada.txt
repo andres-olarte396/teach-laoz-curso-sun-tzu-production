@@ -1,0 +1,13 @@
+Sun Tzu habla de las 9 Variaciones. Terrenos donde no puedes acampar. Caminos que no debes seguir. La lección es: El plan nunca sobrevive al contacto con el enemigo. Tu sistema distribuido es un mapa de batalla que cambia cada segundo.
+
+¿Qué pasa si AWS pierde una zona? ¿Qué pasa si el DNS falla? La mayoría de las empresas rezan para que no pase. Las empresas de élite, como Netflix, provocan que pase. Eso es Chaos Engineering.
+
+Piensa en una vacuna. Te inyectan un virus debilitado para que tu cuerpo aprenda a defenderse. Chaos Engineering es inyectar fallos controlados. Apagamos un servidor un martes a las 10 AM, con todo el equipo mirando. ¿El sistema se recuperó solo? ¿Sí? Genial. Somos inmunes. ¿No? Genial. Encontramos una debilidad antes de que nos matara en Black Friday.
+
+No es entrar al data center con un hacha a lo loco. Es el método científico. Hipótesis: "Si desconecto el cable de red de la base de datos, la app debería mostrar datos en caché". Experimento: Desconectar cable. Observación: La app mostró un error 500 horrible. Conclusión: Nuestra caché no funciona. ¡A arreglarlo!
+
+Si no haces esto tú, el universo lo hará por ti. Y el universo no tiene piedad ni horarios de oficina. Rompe tu sistema hoy, para que no se rompa mañana.
+
+El caos es inevitable. El sufrimiento es opcional. Entrena a tu sistema para navegar las 9 variaciones. Que la inestabilidad sea su elemento natural. Se llama Antifragilidad.
+
+Nos vemos.

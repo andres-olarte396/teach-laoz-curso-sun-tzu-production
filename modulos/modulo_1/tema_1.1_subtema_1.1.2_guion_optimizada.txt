@@ -1,0 +1,13 @@
+Ya tienes un propósito, el Tao, y un momento, el Clima. Ahora miras hacia abajo, a la realidad. Eso es el Terreno. Miras a tu lado, a tu equipo. Eso es el Liderazgo. Y miras tu manual de operaciones. Eso es el Método.
+
+Sin estos tres, tu estrategia es solo un sueño alucinatorio.
+
+El Terreno dicta la táctica. No despliegas microservicios en un mainframe monolítico legacy. Sun Tzu identifica terrenos mortales. En código, un Terreno Mortal es un sistema sin logs, sin tests y sin documentación donde un error cuesta millones. Tu trabajo es identificar el terreno antes de marchar.
+
+¿Qué hace a un Tech Lead? No es solo saber React o Kubernetes. Esa es la virtud de la Sabiduría. Pero Sun Tzu exige cinco: Sabiduría, Sinceridad, Benevolencia, Coraje y Disciplina.
+
+He visto Tech Leads brillantes pero cobardes, que aceptan fechas imposibles y queman a su equipo. Eso es una falla de Liderazgo. He visto Tech Leads buena onda pero sin Disciplina, cuyo repositorio es un basurero. El equilibrio es la clave.
+
+Finalmente, el Método. La logística. ¿Cómo llega el código de tu laptop a producción? Si tu proceso es manual y doloroso, tienes una logística fallida. Tu ejército morirá de hambre antes de llegar al campo de batalla. La automatización es la logística moderna.
+
+Evalúa tus 3 factores operacionales hoy. ¿Tu terreno es firme? ¿Tu liderazgo es equilibrado? ¿Tu método es ágil? Si la respuesta es sí, eres invencible.

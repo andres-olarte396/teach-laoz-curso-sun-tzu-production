@@ -1,0 +1,15 @@
+# GUIÓN: 5.1 - EL CRISOL
+
+**[LOCUTOR]**:
+Todo lo que has aprendido hasta ahora era teoría.
+Ahora estás en el War Room.
+El servidor está caído. El dinero está volando. El jefe está gritando.
+Aquí es donde se forjan los Generales.
+
+**[LOCUTOR]**:
+Recuerda tus entrenamientos.
+No corras. Respira. observa OODA Loop.
+Maniobra: usa tus Feature Flags.
+Intel: mira tus métricas, no adivines.
+Política: construye el puente dorado para el CEO.
+Tú tienes el control. Ejecuta.

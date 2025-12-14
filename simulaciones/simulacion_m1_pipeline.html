@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulación M1: El Costo del Batch Size</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #1a1a2e; color: #fff; text-align: center; }
+        .pipeline { display: flex; justify-content: space-around; align-items: center; margin: 20px auto; width: 80%; background: #16213e; padding: 20px; border-radius: 10px; }
+        .stage { border: 2px solid #0f3460; padding: 20px; width: 100px; border-radius: 5px; position: relative; }
+        .batch { background: #e94560; color: white; padding: 10px; margin: 5px; border-radius: 50%; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; transition: all 0.5s; }
+        .controls { margin-top: 20px; }
+        button { background: #0f3460; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; margin: 5px; }
+        button:hover { background: #e94560; }
+        #metrics { margin-top: 20px; font-size: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Economía del Tiempo: Lotes Grandes vs Pequeños</h1>
+    <p>Intenta procesar 20 unidades de trabajo. Observa cómo el tamaño del lote afecta el Lead Time.</p>
+    
+    <div id="metrics">
+        Unidades Desplegadas: <span id="deployed">0</span> | 
+        Tiempo Transcurrido: <span id="timer">0</span>s
+    </div>
+
+    <div class="pipeline">
+        <div class="stage" id="dev">Dev</div>
+        <div class="stage" id="qa">QA</div>
+        <div class="stage" id="prod">Prod</div>
+    </div>
+
+    <div class="controls">
+        <button onclick="startSimulation(1)">Lote Pequeño (1 en 1)</button>
+        <button onclick="startSimulation(5)">Lote Medio (5 en 5)</button>
+        <button onclick="startSimulation(20)">Lote Gigante (20 a la vez)</button>
+        <button onclick="reset()">Reset</button>
+    </div>
+
+    <script>
+        let deployed = 0;
+        let time = 0;
+        let interval;
+        const totalUnits = 20;
+
+        function reset() {
+            deployed = 0;
+            time = 0;
+            clearInterval(interval);
+            document.getElementById('deployed').innerText = 0;
+            document.getElementById('timer').innerText = 0;
+            document.querySelectorAll('.stage').forEach(el => el.innerHTML = el.id.toUpperCase());
+        }
+
+        async function startSimulation(batchSize) {
+            reset();
+            interval = setInterval(() => { time++; document.getElementById('timer').innerText = time; }, 100);
+            
+            let batches = Math.ceil(totalUnits / batchSize);
+            
+            for (let i = 0; i < batches; i++) {
+                // Visualize movement
+                await moveBatch('dev', batchSize);
+                await moveBatch('qa', batchSize);
+                await moveBatch('prod', batchSize);
+                
+                deployed += batchSize;
+                if(deployed > totalUnits) deployed = totalUnits;
+                document.getElementById('deployed').innerText = deployed;
+            }
+            
+            clearInterval(interval);
+            alert(`Simulación terminada en ${time/10} segundos.\nConclusión Sun Tzu: Los lotes pequeños fluyen más rápido.`);
+        }
+
+        function moveBatch(stageId, size) {
+            return new Promise(resolve => {
+                const stage = document.getElementById(stageId);
+                const visualization = document.createElement('div');
+                visualization.className = 'batch';
+                visualization.innerText = size;
+                visualization.style.width = (30 + size * 5) + 'px'; // Bigger batch = Bigger circle
+                visualization.style.height = (30 + size * 5) + 'px';
+                stage.appendChild(visualization);
+
+                // Simulation delay: Bigger batches take exponentially longer to verify/process
+                // Small batch (1) -> 200ms
+                // Big batch (20) -> 2000ms * 3 stages
+                const delay = 200 + (size * size * 10); 
+                
+                setTimeout(() => {
+                    stage.removeChild(visualization);
+                    resolve();
+                }, delay);
+            });
+        }
+    </script>
+</body>
+</html>

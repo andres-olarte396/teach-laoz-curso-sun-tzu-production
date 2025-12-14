@@ -1,0 +1,13 @@
+La línea recta es la distancia más corta entre dos puntos en geometría. Pero en la guerra y en el software, la línea recta es a menudo un campo minado. Sun Tzu habla de la Maniobra: Hacer de la ruta tortuosa, la más directa.
+
+¿Qué significa esto? Que intentar construir la Solución Final desde el día 1 es suicida. Te encontrarás con bloqueos, requisitos que cambian y competencia. La maniobra es tomar un desvío aparente, como un MVP sucio o un prototipo falso, para llegar a la meta antes que nadie.
+
+Imagina que quieres automatizar la atención al cliente con Inteligencia Artificial. La ruta directa: Contratar 10 Data Scientists, entrenar modelos por 6 meses, lanzar. Riesgo: 6 meses y millones de dólares. Y quizás a nadie le guste.
+
+La ruta indirecta: Pones una caja de chat. Detrás, pones a 2 humanos respondiendo rápido. El usuario cree que es AI. Tú validas si el chat funciona. Costo: 2 sueldos. Tiempo: 1 día. Has llegado al mercado 6 meses antes. Eso es hacer de lo sinuoso, directo.
+
+En Silicon Valley llaman a esto "Fake door testing". ¿Quieres saber si la gente pagaría por una exportación a Excel? No la construyas. Pon el botón. Si hacen click, diles "Próximamente". Y cuenta los clicks. Si nadie hace click, te ahorraste el trabajo.
+
+Como ingeniero, esto duele. Queremos construir sistemas reales. Pero como estratega, esto es gloria. Es ganar sin gastar munición.
+
+No confundas el mapa con el territorio. Tu objetivo no es escribir código. Es resolver el problema. A veces, un Excel compartido resuelve el problema hoy, mientras la Gran App tarda un año. Usa la ruta indirecta. Gana tiempo. Gana la guerra.

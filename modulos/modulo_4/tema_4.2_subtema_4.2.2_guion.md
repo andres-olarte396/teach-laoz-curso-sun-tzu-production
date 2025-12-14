@@ -1,0 +1,13 @@
+# GUIÓN: 4.2.2 - DIPLOMACIA TÉCNICA
+
+**[LOCUTOR]**:
+La regla de oro de la negociación: "Al enemigo acorralado se le deja una salida".
+Si humillas a un compañero en público, te ganarás un enemigo de por vida.
+Y los enemigos en TI tienen memoria larga.
+
+**[LOCUTOR]**:
+Construye Puentes Dorados.
+Deja que la otra persona sienta que ganó algo.
+Tú te quedas con la arquitectura correcta. Ellos se quedan con la medalla.
+¿Te importa el crédito o te importa el resultado?
+El General sabio elige el resultado.

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulación M5: WAR ROOM</title>
+    <style>
+        body { background: #111; color: #f00; font-family: 'Courier New', monospace; padding: 20px; }
+        .terminal { border: 2px solid #f00; padding: 20px; height: 400px; overflow-y: scroll; background: #000; }
+        .input-line { margin-top: 10px; display: flex; }
+        input { background: #222; border: none; color: #0f0; flex-grow: 1; padding: 10px; font-family: inherit; font-size: 16px; outline: none; }
+        button { background: #f00; color: #000; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; }
+        .msg { margin-bottom: 5px; }
+        .system { color: #0f0; }
+        .ceo { color: #ff0; font-weight: bold; }
+        .alert { color: #f00; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <h1>WAR ROOM: BLACK FRIDAY EVE</h1>
+    <div id="terminal" class="terminal">
+        <div class="msg system">SISTEMA INICIADO... 16:00 HRS</div>
+        <div class="msg alert">ALERTA CRÍTICA: TASA DE ERRORES PAGOS > 50%</div>
+        <div class="msg ceo">CEO: "¡Estoy perdiendo dinero! ¡Arregladlo YA o despido a todos!"</div>
+        <div class="msg system">Mando disponible. Opciones:</div>
+        <div class="msg system">- `rollback`: Volver a versión anterior (Seguro, lento 15m)</div>
+        <div class="msg system">- `flag_off`: Apagar Feature Flag de Pagos Nuevos (Inmediato, apaga Crypto)</div>
+        <div class="msg system">- `investigate`: Leer logs (Tarda 10m, resultado incierto)</div>
+    </div>
+    
+    <div class="input-line">
+        <span style="padding: 10px;">></span>
+        <input type="text" id="cmd" placeholder="Escribe comando..." onkeydown="if(event.key==='Enter') execute()">
+        <button onclick="execute()">EJECUTAR</button>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+        const input = document.getElementById('cmd');
+
+        function log(text, type='system') {
+            const div = document.createElement('div');
+            div.className = 'msg ' + type;
+            div.innerText = text;
+            terminal.appendChild(div);
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function execute() {
+            const cmd = input.value.trim().toLowerCase();
+            input.value = '';
+            log('> ' + cmd, 'system');
+
+            if (cmd === 'rollback') {
+                log('Iniciando Rollback...', 'system');
+                setTimeout(() => {
+                    log('CEO: "¿Por qué tarda tanto? ¡Estamos perdiendo usuarios!"', 'ceo');
+                }, 2000);
+                setTimeout(() => {
+                    log('Rollback completado. Errores: 0%. Pero perdimos 15 mins de ventas.', 'system');
+                    log('RESULTADO: VICTORIA PÍRRICA. Sobreviviste, pero el CEO está furioso.', 'system');
+                }, 4000);
+            } else if (cmd === 'flag_off') {
+                log('Switching Flag PAYMENT_V2 -> OFF...', 'system');
+                setTimeout(() => {
+                    log('Errores: 0%. Crypto desactivado. Pagos Clásicos activos.', 'system');
+                    log('CEO: "¡Bien hecho! ¡Salvaste las ventas! Hablamos de Crypto el lunes."', 'ceo');
+                    log('RESULTADO: VICTORIA TOTAL (Sun Tzu Style).', 'system');
+                }, 1000);
+            } else if (cmd === 'investigate') {
+                log('Leyendo logs... Stack trace complejo encontrado...', 'system');
+                setTimeout(() => {
+                    log('CEO: "¡Deja de leer y haz algo! ¡Se cayó el servidor entero!"', 'ceo');
+                    log('System Crash. Base de datos saturada.', 'alert');
+                    log('RESULTADO: DERROTA. Parálisis por análisis.', 'alert');
+                }, 3000);
+            } else {
+                log('Comando desconocido. El pánico aumenta.', 'system');
+            }
+        }
+    </script>
+</body>
+</html>

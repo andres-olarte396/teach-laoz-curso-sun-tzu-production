@@ -1,0 +1,15 @@
+Sun Tzu dice: "Cuando concentro mis fuerzas en un solo punto, mientras el enemigo divide las suyas en diez, ataco con diez a uno". Matemáticas simples.
+
+En los equipos de desarrollo modernos, hacemos lo contrario. Tenemos 5 desarrolladores y les damos 5 tareas distintas. Dividimos nuestra fuerza. Cada desarrollador está solo contra su problema. Si se atora, se atora solo.
+
+La técnica de Swarming aplica la concentración de fuerza. 5 desarrolladores. 1 tarea. 1 computadora. Suena ineficiente, ¿verdad? "Pago 5 sueldos para que escriba uno".
+
+Es falso. Cuando 5 cerebros atacan un problema: Los bloqueos desaparecen en segundos. El Code Review ocurre en tiempo real. El conocimiento se comparte instantáneamente. No más silos. La tarea que a uno le tomaría 3 días, al enjambre le toma 2 horas.
+
+Para lograr esto, debes limitar el WIP, Work In Progress. Si tienes 20 tickets abiertos para un equipo de 5... has perdido. Estás disperso. Reduce el WIP a 2 o 3. Obliga a la gente a colaborar.
+
+"Deja de empezar y empieza a terminar". Ese es el mantra de la concentración de fuerza. Un ticket terminado vale dinero. Diez tickets al 90% valen cero.
+
+La próxima vez que haya un problema difícil o un incidente... no mandes al Senior Héroe solo. Manda al enjambre. Aplasta el problema con superioridad numérica absoluta.
+
+Nos vemos en el Módulo 3.

@@ -1,0 +1,13 @@
+# GUIÓN: 4.3.1 - LOS OJOS DEL GENERAL
+
+**[LOCUTOR]**:
+Sun Tzu dice: "El conocimiento previo no viene de los dioses, viene de los hombres".
+Si te enteras de los problemas el día del lanzamiento, has fracasado.
+Necesitas ojos en todas partes.
+
+**[LOCUTOR]**:
+Cultiva tu red.
+Invita a café al de Soporte. Él sabe qué odian los usuarios.
+Habla con el de Ventas. Él sabe qué promesas falsas se están haciendo.
+La información es la munición de la estrategia.
+Sin ella, disparas a ciegas.

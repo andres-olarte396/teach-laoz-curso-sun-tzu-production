@@ -1,0 +1,11 @@
+Sun Tzu dice: "Los guerreros victoriosos ganan primero y luego van a la guerra". ¿Cómo se gana primero en software? Con Arquitectura.
+
+Si diseñas bien el sistema, los problemas difíciles se resuelven solos. Si diseñas mal, hasta cambiar el color de un botón puede tirar la producción. Hoy hablamos de Arquitectura como Estrategia Ofensiva.
+
+Piensa en el código como un terreno físico. Un monolito acoplado es un desfiladero estrecho. Un solo error bloquea el camino de todos. Microservicios bien hechos son llanuras abiertas. Múltiples equipos pueden avanzar en paralelo.
+
+Tú, como arquitecto, decides si tu equipo peleará en un desfiladero o en una llanura. No es solo técnico. Es político. La Ley de Conway dice que el sistema copiará la organización. Usa esto a tu favor.
+
+Ejemplo clásico: Frontend y Backend pelean por esquemas JSON. Solución de guerra: Reuniones, gritos, documentos de Word. Solución de diseño: GraphQL o Contratos Automatizados. El sistema impide el conflicto. Si rompes el contrato, no compila. Haces que pelear sea imposible. Eso es ganar por diseño.
+
+Hemos terminado el Módulo 1. Ya sabes Analizar con los 5 Factores, Planificar Logística con el Cycle Time y Diseñar Estrategia en Capas. Estás listo. La planificación ha terminado. En el Módulo 2, empezamos a construir las defensas. Hablaremos de Inmutabilidad y Antifragilidad. Prepárate.

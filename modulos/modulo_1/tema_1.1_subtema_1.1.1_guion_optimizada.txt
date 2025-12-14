@@ -1,0 +1,23 @@
+Imagina que eres un general. Tienes el mejor ejército, las mejores armas, y la moral alta. Pero decides invadir Rusia en invierno.
+
+No importa cuán buena sea tu táctica. Has perdido antes de empezar. En ingeniería de software, hacemos esto todo el tiempo. Lanzamos productos excelentes que nadie quiere, lo que llamamos un Fallo de Tao, o intentamos reescribir sistemas críticos en la semana del Black Friday, un claro Fallo de Clima.
+
+Hoy, en el primer nivel del Modelo de 5 Factores, aprenderemos a no pelear batallas que la estrategia ya ha declarado perdidas. Hablaremos del Tao, el Propósito, y el Tian, el Clima.
+
+Sun Tzu dice que el Tao hace que el pueblo esté en completa armonía con su gobernante.
+
+En nuestro mundo, el Gobernante es el Negocio. El Pueblo son los Usuarios. Y tú, el General, eres la Ingeniería.
+
+El Tao es la alineación vertical. Pregúntate en tu proyecto actual: ¿Ingeniería está construyendo lo que Negocio vendió? Y más importante, ¿Negocio vendió lo que el Usuario realmente necesita?
+
+Si la respuesta es No en cualquier punto, tienes una Fractura de Tao. Si sigues codificando sobre una fractura de Tao, no estás construyendo software, estás generando deuda estratégica. Estás trabajando duro para crear algo que será descartado.
+
+Ahora, hablemos del Cielo, el Clima. El Tian. El Clima son las restricciones temporales que no puedes controlar, solo navegar.
+
+Piensa en las Estaciones Tecnológicas. Hay una primavera para adoptar tecnología, cuando es nueva y te da ventaja competitiva. Hay un verano, cuando es estándar y segura. Y hay un invierno, cuando está obsoleta y solo te da problemas de mantenimiento.
+
+Un error clásico de Senior Engineer es tratar de usar tecnología de Primavera, es decir, Alpha o inestable, en un proyecto de Invierno, que es crítico, estable o bancario. Eso es pelear contra el clima.
+
+Antes de aceptar tu próxima misión o ticket de Jira, haz el Chequeo de 5 Factores. Primero, Tao: ¿Está alineado el propósito? Segundo, Clima: ¿Es el momento correcto?
+
+Si ambos son positivos, entonces, y solo entonces, miramos el terreno técnico. Nos vemos en la siguiente lección.
