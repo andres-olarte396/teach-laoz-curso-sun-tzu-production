@@ -1,6 +1,7 @@
 # EJERCICIOS: 4.2.2 - EL ARTE DEL ACUERDO
 
 ## EJERCICIO 1: EL PUENTE DORADO
+
 El CEO quiere lanzar la App el viernes. Es imposible.
 Si dices "No", te despide. Si dices "Sí", fracasas.
 Diseña el "Puente Dorado":
@@ -11,5 +12,6 @@ El lunes vamos con todo."
 ¿Por qué funciona esto?
 
 ## EJERCICIO 2: TRADUCCIÓN
+
 Traduce: "Necesito refactorizar el legacy code" a idioma de Negocios.
 Respuesta: "Necesitamos reducir la tasa de interés de nuestra deuda tecnológica para acelerar los futuros features en un 30%."

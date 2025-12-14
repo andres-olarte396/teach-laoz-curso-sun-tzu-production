@@ -1,6 +1,7 @@
 # GUIÓN: GESTIÓN DEL MOMENTUM (MANIOBRA)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 12 Minutos
 - **Tono**: Astuto, revelador.
 
@@ -30,7 +31,7 @@ Riesgo: 6 meses y millones de dólares. Y quizás a nadie le guste.
 
 **[LOCUTOR]**:
 La ruta indirecta (Maniobra): Pones una caja de chat. Detrás, pones a 2 humanos respondiendo rápido.
-El usuario *cree* que es AI. Tú validas si el chat funciona.
+El usuario _cree_ que es AI. Tú validas si el chat funciona.
 Costo: 2 sueldos. Tiempo: 1 día.
 Has llegado al mercado 6 meses antes. Eso es hacer de lo sinuoso, directo.
 

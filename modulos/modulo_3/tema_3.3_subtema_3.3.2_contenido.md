@@ -6,7 +6,7 @@
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -21,58 +21,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -81,12 +92,14 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
 
 ## 📊 ESTRUCTURA DE MANDO (ICS)
+
 `mermaid
 graph TD
     IC[Incident Commander] --> Ops[Ops Lead]
@@ -105,7 +118,7 @@ if (-not (# PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -120,58 +133,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -180,11 +204,12 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Value (# PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Value (# PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
 
 **Tiempo estimado**: 50 minutos
 **Nivel**: Tech Lead / Manager
@@ -192,7 +217,7 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -207,58 +232,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -267,16 +303,21 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
- + 
+
+-
+
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Experimento**: ¿Cómo afecta el tamaño del lote a la velocidad de entrega?
 > [🏠 ABRIR SIMULACIÓN DE PIPELINE](../../simulaciones/simulacion_m1_pipeline.html)
 
 ## 📊 GRÁFICO: LA CURVA J DEL RETRASO
+
 `mermaid
 xychart-beta
     title "Costo de No Desplegar (Deuda de Inventario)"
@@ -293,7 +334,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -310,9 +351,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -326,8 +368,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -350,14 +392,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -376,14 +418,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -392,11 +438,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -404,7 +451,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -421,9 +468,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -437,8 +485,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -461,14 +509,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -487,14 +535,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -503,12 +555,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -519,10 +575,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 1.3.1: Layers
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.3_subtema_1.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -531,7 +589,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -548,9 +606,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -564,8 +623,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -588,14 +647,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -614,14 +673,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -630,13 +693,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -647,9 +712,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 ARQUITECTURA: DEFENSA EN CAPAS
+
 `mermaid
 graph BT
     L1[Capa Física (Difícil)] --> L2[Capa Lógica (Media)]
@@ -668,7 +734,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -685,9 +751,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -701,8 +768,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -725,14 +792,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -751,14 +818,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -767,11 +838,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -779,7 +851,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -796,9 +868,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -812,8 +885,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -836,14 +909,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -862,14 +935,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -878,12 +955,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -894,13 +975,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 2 ---
 
 # 2.1.1: Pets vs Cattle
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.1_subtema_2.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -909,7 +991,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -926,9 +1008,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -942,8 +1025,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -966,14 +1049,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -992,14 +1075,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -1008,13 +1095,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -1025,9 +1114,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: MASCOTAS VS GANADO
+
 `mermaid
 graph LR
     subgraph Pets [Mascotas (Tradicional)]
@@ -1049,7 +1139,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -1066,9 +1156,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -1082,8 +1173,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -1106,14 +1197,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -1132,14 +1223,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -1148,11 +1243,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -1160,7 +1256,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -1177,9 +1273,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -1193,8 +1290,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -1217,14 +1314,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -1243,14 +1340,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -1259,12 +1360,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -1275,10 +1380,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.2.1: Zheng/Qi + Sim Tokens
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.2_subtema_2.2.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -1287,7 +1394,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -1304,9 +1411,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -1320,8 +1428,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -1344,14 +1452,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -1370,14 +1478,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -1386,13 +1498,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -1403,13 +1517,15 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Reto**: Tienes 3 'Innovation Tokens'. ¿Puedes armar una arquitectura que no quiebre la empresa?
 > [🏠 ABRIR JUEGO DE ARCHITECTURA](../../simulaciones/simulacion_m2_tokens.html)
 
 ## 📊 DISTRIBUCIÓN ÓPTIMA
+
 `mermaid
 pie title "Distribución de Arquitectura Sana"
     "Zheng (Estándar/Aburrido)" : 80
@@ -1424,7 +1540,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -1441,9 +1557,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -1457,8 +1574,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -1481,14 +1598,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -1507,14 +1624,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -1523,11 +1644,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -1535,7 +1657,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -1552,9 +1674,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -1568,8 +1691,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -1592,14 +1715,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -1618,14 +1741,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -1634,12 +1761,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -1650,10 +1781,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.3.2: Swarming
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.3_subtema_2.3.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -1662,7 +1795,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -1679,9 +1812,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -1695,8 +1829,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -1719,14 +1853,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -1745,14 +1879,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -1761,13 +1899,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -1778,9 +1918,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 TÁCTICA: SWARMING VS DISPERSIÓN
+
 `mermaid
 graph TD
     subgraph Escenario_Malo [Dispersión]
@@ -1805,7 +1946,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -1822,9 +1963,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -1838,8 +1980,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -1862,14 +2004,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -1888,14 +2030,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -1904,11 +2050,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -1916,7 +2063,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -1933,9 +2080,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -1949,8 +2097,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -1973,14 +2121,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -1999,14 +2147,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -2015,12 +2167,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -2031,13 +2187,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 3 ---
 
 # 3.1.1: Maniobra (Wizard of Oz)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.1_subtema_3.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -2046,7 +2203,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -2063,9 +2220,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -2079,8 +2237,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -2103,14 +2261,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -2129,14 +2287,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -2145,13 +2307,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -2162,9 +2326,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 SECUENCIA: MAGO DE OZ
+
 `mermaid
 sequenceDiagram
     participant U as Usuario
@@ -2185,7 +2350,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -2202,9 +2367,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -2218,8 +2384,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -2242,14 +2408,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -2268,14 +2434,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -2284,11 +2454,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -2296,7 +2467,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -2313,9 +2484,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -2329,8 +2501,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -2353,14 +2525,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -2379,14 +2551,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -2395,12 +2571,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -2411,10 +2591,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.2.2 Intelligence (Trace)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.2_subtema_3.2.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -2423,7 +2605,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -2440,9 +2622,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -2456,8 +2639,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -2480,14 +2663,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -2506,14 +2689,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -2522,13 +2709,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -2539,9 +2728,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: DISTRIBUTED TRACING
+
 `mermaid
 gantt
     title Trace ID: abc-123 (Cascada de Latencia)
@@ -2565,7 +2755,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -2582,9 +2772,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -2598,8 +2789,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -2622,14 +2813,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -2648,14 +2839,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -2664,11 +2859,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -2676,7 +2872,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -2693,9 +2889,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -2709,8 +2906,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -2733,14 +2930,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -2759,14 +2956,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -2775,12 +2976,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -2791,10 +2996,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.3.1 Chaos Sim
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -2803,7 +3010,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -2820,9 +3027,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -2836,8 +3044,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -2860,14 +3068,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -2886,14 +3094,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -2902,13 +3114,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -2919,17 +3133,19 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Laboratorio**: Tienes acceso a la consola de Chaos Monkey. Destruye servidores y observa si el sistema se recupera.
 > [🏠 ABRIR CONSOLA DE CAOS](../../simulaciones/simulacion_m3_chaos.html)) -Encoding UTF8 }
-
 
 # --- MODULO 4 ---
 
 # 4.1.1 Virtudes + RPG
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_4\tema_4.1_subtema_4.1.1_contenido.md"
+
 # PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
 
 **Tiempo estimado**: 50 minutos
@@ -2938,7 +3154,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -2953,58 +3169,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -3013,17 +3240,20 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Raw
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Experimento**: ¿Cómo afecta el tamaño del lote a la velocidad de entrega?
 > [🏠 ABRIR SIMULACIÓN DE PIPELINE](../../simulaciones/simulacion_m1_pipeline.html)
 
 ## 📊 GRÁFICO: LA CURVA J DEL RETRASO
+
 `mermaid
 xychart-beta
     title "Costo de No Desplegar (Deuda de Inventario)"
@@ -3040,7 +3270,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -3057,9 +3287,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -3073,8 +3304,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -3097,14 +3328,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -3123,14 +3354,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -3139,11 +3374,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -3151,7 +3387,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -3168,9 +3404,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -3184,8 +3421,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -3208,14 +3445,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -3234,14 +3471,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -3250,12 +3491,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -3266,10 +3511,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 1.3.1: Layers
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.3_subtema_1.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -3278,7 +3525,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -3295,9 +3542,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -3311,8 +3559,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -3335,14 +3583,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -3361,14 +3609,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -3377,13 +3629,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -3394,9 +3648,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 ARQUITECTURA: DEFENSA EN CAPAS
+
 `mermaid
 graph BT
     L1[Capa Física (Difícil)] --> L2[Capa Lógica (Media)]
@@ -3415,7 +3670,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -3432,9 +3687,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -3448,8 +3704,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -3472,14 +3728,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -3498,14 +3754,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -3514,11 +3774,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -3526,7 +3787,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -3543,9 +3804,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -3559,8 +3821,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -3583,14 +3845,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -3609,14 +3871,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -3625,12 +3891,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -3641,13 +3911,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 2 ---
 
 # 2.1.1: Pets vs Cattle
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.1_subtema_2.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -3656,7 +3927,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -3673,9 +3944,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -3689,8 +3961,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -3713,14 +3985,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -3739,14 +4011,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -3755,13 +4031,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -3772,9 +4050,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: MASCOTAS VS GANADO
+
 `mermaid
 graph LR
     subgraph Pets [Mascotas (Tradicional)]
@@ -3796,7 +4075,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -3813,9 +4092,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -3829,8 +4109,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -3853,14 +4133,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -3879,14 +4159,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -3895,11 +4179,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -3907,7 +4192,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -3924,9 +4209,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -3940,8 +4226,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -3964,14 +4250,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -3990,14 +4276,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -4006,12 +4296,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -4022,10 +4316,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.2.1: Zheng/Qi + Sim Tokens
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.2_subtema_2.2.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -4034,7 +4330,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -4051,9 +4347,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -4067,8 +4364,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -4091,14 +4388,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -4117,14 +4414,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -4133,13 +4434,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -4150,13 +4453,15 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Reto**: Tienes 3 'Innovation Tokens'. ¿Puedes armar una arquitectura que no quiebre la empresa?
 > [🏠 ABRIR JUEGO DE ARCHITECTURA](../../simulaciones/simulacion_m2_tokens.html)
 
 ## 📊 DISTRIBUCIÓN ÓPTIMA
+
 `mermaid
 pie title "Distribución de Arquitectura Sana"
     "Zheng (Estándar/Aburrido)" : 80
@@ -4171,7 +4476,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -4188,9 +4493,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -4204,8 +4510,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -4228,14 +4534,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -4254,14 +4560,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -4270,11 +4580,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -4282,7 +4593,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -4299,9 +4610,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -4315,8 +4627,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -4339,14 +4651,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -4365,14 +4677,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -4381,12 +4697,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -4397,10 +4717,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.3.2: Swarming
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.3_subtema_2.3.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -4409,7 +4731,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -4426,9 +4748,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -4442,8 +4765,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -4466,14 +4789,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -4492,14 +4815,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -4508,13 +4835,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -4525,9 +4854,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 TÁCTICA: SWARMING VS DISPERSIÓN
+
 `mermaid
 graph TD
     subgraph Escenario_Malo [Dispersión]
@@ -4552,7 +4882,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -4569,9 +4899,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -4585,8 +4916,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -4609,14 +4940,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -4635,14 +4966,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -4651,11 +4986,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -4663,7 +4999,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -4680,9 +5016,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -4696,8 +5033,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -4720,14 +5057,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -4746,14 +5083,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -4762,12 +5103,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -4778,13 +5123,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 3 ---
 
 # 3.1.1: Maniobra (Wizard of Oz)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.1_subtema_3.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -4793,7 +5139,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -4810,9 +5156,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -4826,8 +5173,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -4850,14 +5197,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -4876,14 +5223,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -4892,13 +5243,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -4909,9 +5262,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 SECUENCIA: MAGO DE OZ
+
 `mermaid
 sequenceDiagram
     participant U as Usuario
@@ -4932,7 +5286,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -4949,9 +5303,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -4965,8 +5320,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -4989,14 +5344,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -5015,14 +5370,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -5031,11 +5390,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -5043,7 +5403,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -5060,9 +5420,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -5076,8 +5437,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -5100,14 +5461,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -5126,14 +5487,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -5142,12 +5507,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -5158,10 +5527,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.2.2 Intelligence (Trace)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.2_subtema_3.2.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -5170,7 +5541,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -5187,9 +5558,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -5203,8 +5575,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -5227,14 +5599,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -5253,14 +5625,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -5269,13 +5645,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -5286,9 +5664,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: DISTRIBUTED TRACING
+
 `mermaid
 gantt
     title Trace ID: abc-123 (Cascada de Latencia)
@@ -5312,7 +5691,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -5329,9 +5708,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -5345,8 +5725,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -5369,14 +5749,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -5395,14 +5775,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -5411,11 +5795,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -5423,7 +5808,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -5440,9 +5825,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -5456,8 +5842,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -5480,14 +5866,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -5506,14 +5892,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -5522,12 +5912,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -5538,10 +5932,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.3.1 Chaos Sim
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -5550,7 +5946,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -5567,9 +5963,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -5583,8 +5980,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -5607,14 +6004,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -5633,14 +6030,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -5649,13 +6050,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -5666,17 +6069,20 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Laboratorio**: Tienes acceso a la consola de Chaos Monkey. Destruye servidores y observa si el sistema se recupera.
 > [🏠 ABRIR CONSOLA DE CAOS](../../simulaciones/simulacion_m3_chaos.html) = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Roleplay**: Eres un nuevo Tech Lead. ¿Tienes el coraje para enfrentarte al CEO?
 > [🏠 JUGAR AVENTURA DE LIDERAZGO](../../simulaciones/simulacion_m4_rpg.html)
 
 ## 📊 MINDMAP: LAS 5 VIRTUDES
+
 `mermaid
 mindmap
   root((El General))
@@ -5700,7 +6106,7 @@ if (-not (# PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -5715,58 +6121,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -5775,11 +6192,12 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
- -match "simulacion_m4")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Value (# PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
+-match "simulacion_m4")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Value (# PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
 
 **Tiempo estimado**: 50 minutos
 **Nivel**: Tech Lead / Manager
@@ -5787,7 +6205,7 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -5802,58 +6220,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -5862,16 +6291,21 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
- + 
+
+-
+
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Experimento**: ¿Cómo afecta el tamaño del lote a la velocidad de entrega?
 > [🏠 ABRIR SIMULACIÓN DE PIPELINE](../../simulaciones/simulacion_m1_pipeline.html)
 
 ## 📊 GRÁFICO: LA CURVA J DEL RETRASO
+
 `mermaid
 xychart-beta
     title "Costo de No Desplegar (Deuda de Inventario)"
@@ -5888,7 +6322,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -5905,9 +6339,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -5921,8 +6356,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -5945,14 +6380,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -5971,14 +6406,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -5987,11 +6426,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -5999,7 +6439,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -6016,9 +6456,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -6032,8 +6473,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -6056,14 +6497,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -6082,14 +6523,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -6098,12 +6543,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -6114,10 +6563,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 1.3.1: Layers
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.3_subtema_1.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -6126,7 +6577,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -6143,9 +6594,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -6159,8 +6611,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -6183,14 +6635,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -6209,14 +6661,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -6225,13 +6681,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -6242,9 +6700,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 ARQUITECTURA: DEFENSA EN CAPAS
+
 `mermaid
 graph BT
     L1[Capa Física (Difícil)] --> L2[Capa Lógica (Media)]
@@ -6263,7 +6722,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -6280,9 +6739,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -6296,8 +6756,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -6320,14 +6780,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -6346,14 +6806,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -6362,11 +6826,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -6374,7 +6839,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -6391,9 +6856,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -6407,8 +6873,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -6431,14 +6897,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -6457,14 +6923,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -6473,12 +6943,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -6489,13 +6963,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 2 ---
 
 # 2.1.1: Pets vs Cattle
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.1_subtema_2.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -6504,7 +6979,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -6521,9 +6996,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -6537,8 +7013,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -6561,14 +7037,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -6587,14 +7063,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -6603,13 +7083,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -6620,9 +7102,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: MASCOTAS VS GANADO
+
 `mermaid
 graph LR
     subgraph Pets [Mascotas (Tradicional)]
@@ -6644,7 +7127,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -6661,9 +7144,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -6677,8 +7161,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -6701,14 +7185,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -6727,14 +7211,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -6743,11 +7231,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -6755,7 +7244,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -6772,9 +7261,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -6788,8 +7278,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -6812,14 +7302,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -6838,14 +7328,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -6854,12 +7348,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -6870,10 +7368,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.2.1: Zheng/Qi + Sim Tokens
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.2_subtema_2.2.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -6882,7 +7382,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -6899,9 +7399,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -6915,8 +7416,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -6939,14 +7440,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -6965,14 +7466,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -6981,13 +7486,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -6998,13 +7505,15 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Reto**: Tienes 3 'Innovation Tokens'. ¿Puedes armar una arquitectura que no quiebre la empresa?
 > [🏠 ABRIR JUEGO DE ARCHITECTURA](../../simulaciones/simulacion_m2_tokens.html)
 
 ## 📊 DISTRIBUCIÓN ÓPTIMA
+
 `mermaid
 pie title "Distribución de Arquitectura Sana"
     "Zheng (Estándar/Aburrido)" : 80
@@ -7019,7 +7528,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -7036,9 +7545,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -7052,8 +7562,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -7076,14 +7586,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -7102,14 +7612,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -7118,11 +7632,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -7130,7 +7645,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -7147,9 +7662,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -7163,8 +7679,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -7187,14 +7703,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -7213,14 +7729,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -7229,12 +7749,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -7245,10 +7769,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.3.2: Swarming
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.3_subtema_2.3.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -7257,7 +7783,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -7274,9 +7800,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -7290,8 +7817,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -7314,14 +7841,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -7340,14 +7867,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -7356,13 +7887,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -7373,9 +7906,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 TÁCTICA: SWARMING VS DISPERSIÓN
+
 `mermaid
 graph TD
     subgraph Escenario_Malo [Dispersión]
@@ -7400,7 +7934,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -7417,9 +7951,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -7433,8 +7968,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -7457,14 +7992,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -7483,14 +8018,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -7499,11 +8038,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -7511,7 +8051,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -7528,9 +8068,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -7544,8 +8085,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -7568,14 +8109,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -7594,14 +8135,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -7610,12 +8155,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -7626,13 +8175,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 3 ---
 
 # 3.1.1: Maniobra (Wizard of Oz)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.1_subtema_3.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -7641,7 +8191,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -7658,9 +8208,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -7674,8 +8225,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -7698,14 +8249,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -7724,14 +8275,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -7740,13 +8295,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -7757,9 +8314,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 SECUENCIA: MAGO DE OZ
+
 `mermaid
 sequenceDiagram
     participant U as Usuario
@@ -7780,7 +8338,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -7797,9 +8355,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -7813,8 +8372,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -7837,14 +8396,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -7863,14 +8422,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -7879,11 +8442,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -7891,7 +8455,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -7908,9 +8472,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -7924,8 +8489,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -7948,14 +8513,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -7974,14 +8539,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -7990,12 +8559,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -8006,10 +8579,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.2.2 Intelligence (Trace)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.2_subtema_3.2.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -8018,7 +8593,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -8035,9 +8610,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -8051,8 +8627,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -8075,14 +8651,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -8101,14 +8677,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -8117,13 +8697,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -8134,9 +8716,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: DISTRIBUTED TRACING
+
 `mermaid
 gantt
     title Trace ID: abc-123 (Cascada de Latencia)
@@ -8160,7 +8743,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -8177,9 +8760,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -8193,8 +8777,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -8217,14 +8801,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -8243,14 +8827,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -8259,11 +8847,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -8271,7 +8860,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -8288,9 +8877,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -8304,8 +8894,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -8328,14 +8918,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -8354,14 +8944,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -8370,12 +8964,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -8386,10 +8984,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.3.1 Chaos Sim
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -8398,7 +8998,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -8415,9 +9015,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -8431,8 +9032,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -8455,14 +9056,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -8481,14 +9082,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -8497,13 +9102,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -8514,14 +9121,17 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Laboratorio**: Tienes acceso a la consola de Chaos Monkey. Destruye servidores y observa si el sistema se recupera.
 > [🏠 ABRIR CONSOLA DE CAOS](../../simulaciones/simulacion_m3_chaos.html)) -Encoding UTF8 }
 
 # 4.2.2 Puente Dorado
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_4\tema_4.2_subtema_4.2.2_contenido.md"
+
 # PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
 
 **Tiempo estimado**: 50 minutos
@@ -8530,7 +9140,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -8545,58 +9155,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -8605,17 +9226,20 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Raw
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Experimento**: ¿Cómo afecta el tamaño del lote a la velocidad de entrega?
 > [🏠 ABRIR SIMULACIÓN DE PIPELINE](../../simulaciones/simulacion_m1_pipeline.html)
 
 ## 📊 GRÁFICO: LA CURVA J DEL RETRASO
+
 `mermaid
 xychart-beta
     title "Costo de No Desplegar (Deuda de Inventario)"
@@ -8632,7 +9256,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -8649,9 +9273,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -8665,8 +9290,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -8689,14 +9314,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -8715,14 +9340,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -8731,11 +9360,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -8743,7 +9373,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -8760,9 +9390,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -8776,8 +9407,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -8800,14 +9431,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -8826,14 +9457,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -8842,12 +9477,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -8858,10 +9497,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 1.3.1: Layers
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.3_subtema_1.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -8870,7 +9511,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -8887,9 +9528,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -8903,8 +9545,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -8927,14 +9569,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -8953,14 +9595,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -8969,13 +9615,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -8986,9 +9634,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 ARQUITECTURA: DEFENSA EN CAPAS
+
 `mermaid
 graph BT
     L1[Capa Física (Difícil)] --> L2[Capa Lógica (Media)]
@@ -9007,7 +9656,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -9024,9 +9673,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -9040,8 +9690,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -9064,14 +9714,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -9090,14 +9740,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -9106,11 +9760,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -9118,7 +9773,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -9135,9 +9790,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -9151,8 +9807,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -9175,14 +9831,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -9201,14 +9857,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -9217,12 +9877,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -9233,13 +9897,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 2 ---
 
 # 2.1.1: Pets vs Cattle
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.1_subtema_2.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -9248,7 +9913,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -9265,9 +9930,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -9281,8 +9947,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -9305,14 +9971,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -9331,14 +9997,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -9347,13 +10017,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -9364,9 +10036,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: MASCOTAS VS GANADO
+
 `mermaid
 graph LR
     subgraph Pets [Mascotas (Tradicional)]
@@ -9388,7 +10061,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -9405,9 +10078,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -9421,8 +10095,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -9445,14 +10119,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -9471,14 +10145,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -9487,11 +10165,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -9499,7 +10178,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -9516,9 +10195,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -9532,8 +10212,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -9556,14 +10236,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -9582,14 +10262,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -9598,12 +10282,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -9614,10 +10302,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.2.1: Zheng/Qi + Sim Tokens
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.2_subtema_2.2.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -9626,7 +10316,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -9643,9 +10333,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -9659,8 +10350,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -9683,14 +10374,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -9709,14 +10400,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -9725,13 +10420,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -9742,13 +10439,15 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Reto**: Tienes 3 'Innovation Tokens'. ¿Puedes armar una arquitectura que no quiebre la empresa?
 > [🏠 ABRIR JUEGO DE ARCHITECTURA](../../simulaciones/simulacion_m2_tokens.html)
 
 ## 📊 DISTRIBUCIÓN ÓPTIMA
+
 `mermaid
 pie title "Distribución de Arquitectura Sana"
     "Zheng (Estándar/Aburrido)" : 80
@@ -9763,7 +10462,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -9780,9 +10479,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -9796,8 +10496,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -9820,14 +10520,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -9846,14 +10546,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -9862,11 +10566,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -9874,7 +10579,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -9891,9 +10596,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -9907,8 +10613,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -9931,14 +10637,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -9957,14 +10663,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -9973,12 +10683,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -9989,10 +10703,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.3.2: Swarming
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.3_subtema_2.3.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -10001,7 +10717,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -10018,9 +10734,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -10034,8 +10751,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -10058,14 +10775,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -10084,14 +10801,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -10100,13 +10821,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -10117,9 +10840,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 TÁCTICA: SWARMING VS DISPERSIÓN
+
 `mermaid
 graph TD
     subgraph Escenario_Malo [Dispersión]
@@ -10144,7 +10868,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -10161,9 +10885,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -10177,8 +10902,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -10201,14 +10926,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -10227,14 +10952,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -10243,11 +10972,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -10255,7 +10985,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -10272,9 +11002,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -10288,8 +11019,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -10312,14 +11043,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -10338,14 +11069,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -10354,12 +11089,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -10370,13 +11109,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 3 ---
 
 # 3.1.1: Maniobra (Wizard of Oz)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.1_subtema_3.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -10385,7 +11125,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -10402,9 +11142,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -10418,8 +11159,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -10442,14 +11183,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -10468,14 +11209,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -10484,13 +11229,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -10501,9 +11248,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 SECUENCIA: MAGO DE OZ
+
 `mermaid
 sequenceDiagram
     participant U as Usuario
@@ -10524,7 +11272,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -10541,9 +11289,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -10557,8 +11306,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -10581,14 +11330,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -10607,14 +11356,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -10623,11 +11376,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -10635,7 +11389,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -10652,9 +11406,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -10668,8 +11423,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -10692,14 +11447,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -10718,14 +11473,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -10734,12 +11493,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -10750,10 +11513,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.2.2 Intelligence (Trace)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.2_subtema_3.2.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -10762,7 +11527,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -10779,9 +11544,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -10795,8 +11561,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -10819,14 +11585,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -10845,14 +11611,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -10861,13 +11631,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -10878,9 +11650,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: DISTRIBUTED TRACING
+
 `mermaid
 gantt
     title Trace ID: abc-123 (Cascada de Latencia)
@@ -10904,7 +11677,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -10921,9 +11694,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -10937,8 +11711,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -10961,14 +11735,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -10987,14 +11761,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -11003,11 +11781,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -11015,7 +11794,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -11032,9 +11811,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -11048,8 +11828,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -11072,14 +11852,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -11098,14 +11878,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -11114,12 +11898,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -11130,10 +11918,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.3.1 Chaos Sim
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -11142,7 +11932,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -11159,9 +11949,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -11175,8 +11966,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -11199,14 +11990,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -11225,14 +12016,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -11241,13 +12036,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -11258,13 +12055,15 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Laboratorio**: Tienes acceso a la consola de Chaos Monkey. Destruye servidores y observa si el sistema se recupera.
 > [🏠 ABRIR CONSOLA DE CAOS](../../simulaciones/simulacion_m3_chaos.html) = @"
 
 ## 📊 TÁCTICA: EL PUENTE DORADO
+
 `mermaid
 graph LR
     A[Tu Posición] -- Conflicto --> B[Posición Enemiga]
@@ -11281,7 +12080,7 @@ if (-not (# PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -11296,58 +12095,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -11356,11 +12166,12 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Value (# PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Value (# PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
 
 **Tiempo estimado**: 50 minutos
 **Nivel**: Tech Lead / Manager
@@ -11368,7 +12179,7 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -11383,58 +12194,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -11443,16 +12265,21 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
- + 
+
+-
+
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Experimento**: ¿Cómo afecta el tamaño del lote a la velocidad de entrega?
 > [🏠 ABRIR SIMULACIÓN DE PIPELINE](../../simulaciones/simulacion_m1_pipeline.html)
 
 ## 📊 GRÁFICO: LA CURVA J DEL RETRASO
+
 `mermaid
 xychart-beta
     title "Costo de No Desplegar (Deuda de Inventario)"
@@ -11469,7 +12296,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -11486,9 +12313,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -11502,8 +12330,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -11526,14 +12354,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -11552,14 +12380,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -11568,11 +12400,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -11580,7 +12413,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -11597,9 +12430,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -11613,8 +12447,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -11637,14 +12471,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -11663,14 +12497,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -11679,12 +12517,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -11695,10 +12537,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 1.3.1: Layers
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.3_subtema_1.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -11707,7 +12551,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -11724,9 +12568,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -11740,8 +12585,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -11764,14 +12609,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -11790,14 +12635,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -11806,13 +12655,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -11823,9 +12674,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 ARQUITECTURA: DEFENSA EN CAPAS
+
 `mermaid
 graph BT
     L1[Capa Física (Difícil)] --> L2[Capa Lógica (Media)]
@@ -11844,7 +12696,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -11861,9 +12713,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -11877,8 +12730,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -11901,14 +12754,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -11927,14 +12780,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -11943,11 +12800,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -11955,7 +12813,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -11972,9 +12830,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -11988,8 +12847,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -12012,14 +12871,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -12038,14 +12897,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -12054,12 +12917,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -12070,13 +12937,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 2 ---
 
 # 2.1.1: Pets vs Cattle
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.1_subtema_2.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -12085,7 +12953,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -12102,9 +12970,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -12118,8 +12987,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -12142,14 +13011,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -12168,14 +13037,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -12184,13 +13057,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -12201,9 +13076,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: MASCOTAS VS GANADO
+
 `mermaid
 graph LR
     subgraph Pets [Mascotas (Tradicional)]
@@ -12225,7 +13101,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -12242,9 +13118,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -12258,8 +13135,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -12282,14 +13159,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -12308,14 +13185,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -12324,11 +13205,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -12336,7 +13218,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -12353,9 +13235,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -12369,8 +13252,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -12393,14 +13276,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -12419,14 +13302,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -12435,12 +13322,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -12451,10 +13342,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.2.1: Zheng/Qi + Sim Tokens
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.2_subtema_2.2.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -12463,7 +13356,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -12480,9 +13373,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -12496,8 +13390,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -12520,14 +13414,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -12546,14 +13440,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -12562,13 +13460,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -12579,13 +13479,15 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Reto**: Tienes 3 'Innovation Tokens'. ¿Puedes armar una arquitectura que no quiebre la empresa?
 > [🏠 ABRIR JUEGO DE ARCHITECTURA](../../simulaciones/simulacion_m2_tokens.html)
 
 ## 📊 DISTRIBUCIÓN ÓPTIMA
+
 `mermaid
 pie title "Distribución de Arquitectura Sana"
     "Zheng (Estándar/Aburrido)" : 80
@@ -12600,7 +13502,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -12617,9 +13519,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -12633,8 +13536,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -12657,14 +13560,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -12683,14 +13586,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -12699,11 +13606,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -12711,7 +13619,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -12728,9 +13636,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -12744,8 +13653,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -12768,14 +13677,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -12794,14 +13703,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -12810,12 +13723,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -12826,10 +13743,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.3.2: Swarming
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.3_subtema_2.3.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -12838,7 +13757,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -12855,9 +13774,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -12871,8 +13791,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -12895,14 +13815,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -12921,14 +13841,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -12937,13 +13861,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -12954,9 +13880,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 TÁCTICA: SWARMING VS DISPERSIÓN
+
 `mermaid
 graph TD
     subgraph Escenario_Malo [Dispersión]
@@ -12981,7 +13908,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -12998,9 +13925,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -13014,8 +13942,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -13038,14 +13966,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -13064,14 +13992,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -13080,11 +14012,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -13092,7 +14025,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -13109,9 +14042,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -13125,8 +14059,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -13149,14 +14083,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -13175,14 +14109,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -13191,12 +14129,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -13207,13 +14149,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 3 ---
 
 # 3.1.1: Maniobra (Wizard of Oz)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.1_subtema_3.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -13222,7 +14165,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -13239,9 +14182,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -13255,8 +14199,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -13279,14 +14223,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -13305,14 +14249,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -13321,13 +14269,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -13338,9 +14288,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 SECUENCIA: MAGO DE OZ
+
 `mermaid
 sequenceDiagram
     participant U as Usuario
@@ -13361,7 +14312,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -13378,9 +14329,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -13394,8 +14346,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -13418,14 +14370,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -13444,14 +14396,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -13460,11 +14416,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -13472,7 +14429,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -13489,9 +14446,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -13505,8 +14463,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -13529,14 +14487,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -13555,14 +14513,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -13571,12 +14533,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -13587,10 +14553,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.2.2 Intelligence (Trace)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.2_subtema_3.2.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -13599,7 +14567,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -13616,9 +14584,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -13632,8 +14601,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -13656,14 +14625,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -13682,14 +14651,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -13698,13 +14671,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -13715,9 +14690,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: DISTRIBUTED TRACING
+
 `mermaid
 gantt
     title Trace ID: abc-123 (Cascada de Latencia)
@@ -13741,7 +14717,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -13758,9 +14734,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -13774,8 +14751,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -13798,14 +14775,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -13824,14 +14801,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -13840,11 +14821,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -13852,7 +14834,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -13869,9 +14851,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -13885,8 +14868,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -13909,14 +14892,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -13935,14 +14918,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -13951,12 +14938,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -13967,10 +14958,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.3.1 Chaos Sim
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -13979,7 +14972,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -13996,9 +14989,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -14012,8 +15006,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -14036,14 +15030,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -14062,14 +15056,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -14078,13 +15076,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -14095,17 +15095,19 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Laboratorio**: Tienes acceso a la consola de Chaos Monkey. Destruye servidores y observa si el sistema se recupera.
 > [🏠 ABRIR CONSOLA DE CAOS](../../simulaciones/simulacion_m3_chaos.html)) -Encoding UTF8 }
-
 
 # --- MODULO 5 ---
 
 # 5.1 WarRoom Sim
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_5\tema_5.1_contenido.md"
+
 # PROTOCOLOS DE GUERRA: INCIDENT RESPONSE
 
 **Tiempo estimado**: 50 minutos
@@ -14114,7 +15116,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-Sun Tzu dice: *"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina; el miedo simulado nace del valor; la debilidad simulada nace de la fuerza"_.
 Cuando el sistema cae a las 3 AM y Twitter arde, lo natural es el pánico (Caos real).
 El objetivo de **Incident Response** es transformar ese pánico en un proceso militar disciplinado.
 
@@ -14129,58 +15131,69 @@ Es la aplicación final de todo. Observabilidad (3.2) nos dice que hay fuego. Ma
 ## Comprensión intuitiva
 
 ### Roles de Batalla (ICS - Incident Command System)
+
 Tomado de los bomberos. Cuando hay fuego, no hay democracia. Hay roles.
 
-1.  **Incident Commander (IC)**: El jefe. No toca el teclado.
-    -   *Función*: Toma decisiones, coordina, mantiene la visión global.
-2.  **Ops Lead**: El táctico.
-    -   *Función*: Toca el teclado. Ejecuta los cambios.
-3.  **Comms Lead**: El diplomático.
-    -   *Función*: Habla con clientes/internos. Actualiza la página de estado.
+1. **Incident Commander (IC)**: El jefe. No toca el teclado.
+    - _Función_: Toma decisiones, coordina, mantiene la visión global.
+2. **Ops Lead**: El táctico.
+    - _Función_: Toca el teclado. Ejecuta los cambios.
+3. **Comms Lead**: El diplomático.
+    - _Función_: Habla con clientes/internos. Actualiza la página de estado.
 
 ### El Anti-Patrón: "Todos ayudan"
+
 Si 10 ingenieros entran al canal de Slack a tirar ideas y comandos al azar:
--   Aumenta el ruido.
--   Nadie sabe qué se ha probado.
--   Riesgo de empeorar el incidente.
-**Regla**: Si no tienes rol asignado, te callas y observas.
+
+- Aumenta el ruido.
+- Nadie sabe qué se ha probado.
+- Riesgo de empeorar el incidente.
+  **Regla**: Si no tienes rol asignado, te callas y observas.
 
 ---
 
 ## Implementación práctica: Fases del Incidente
 
 ### 1. Detección y Declaración
--   Alerta automática o reporte de usuario.
--   Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
--   Se abre canal de Slack `#incident-123`.
--   Se asigna el IC.
+
+- Alerta automática o reporte de usuario.
+- Alguien dice: "Declaro Incidente SEV-1". (Nivel de severidad).
+- Se abre canal de Slack `#incident-123`.
+- Se asigna el IC.
 
 ### 2. Contención (Torniquete)
--   **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
--   *Ejemplo*: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
--   No investigues *por qué* la query es lenta ahora. Apágala. Recupera el servicio.
+
+- **Objetivo**: Parar el sangrado. No arreglar la causa raíz.
+- _Ejemplo_: Si la DB está lenta por una feature nueva -> Rollback o Feature Flag OFF.
+- No investigues _por qué_ la query es lenta ahora. Apágala. Recupera el servicio.
 
 ### 3. Remediación
--   Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
+
+- Una vez el usuario está feliz (servicio arriba), investigamos la causa raíz con calma.
 
 ### 4. Post-Mortem (La Lección)
--   Documento escrito SIN CULPA (Blameless).
--   ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
--   Se generan tickets de mejora en Jira.
+
+- Documento escrito SIN CULPA (Blameless).
+- ¿Qué pasó? ¿Por qué? ¿Cómo evitamos que se repita?
+- Se generan tickets de mejora en Jira.
 
 ---
 
 ## Trampas y errores comunes
 
 ### ❌ Error: Buscar Culpables durante el fuego
+
 "¿Quién pusheó este commit?"
--   **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
--   **Sun Tzu**: *"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"*.
--   **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
+
+- **Efecto**: La gente se defiende en lugar de arreglar el problema. Miedo. Silencio.
+- **Sun Tzu**: _"Trata a tus soldados como a hijos amados y te seguirán al valle más profundo"_.
+- **Solución**: Enfócate en el sistema, no en la persona. "El sistema permitió que un error humano llegara a prod".
 
 ### ❌ Error: Fatiga de Alerta
+
 Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
--   **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
+
+- **Efecto**: El ingeniero ignora el teléfono. Cuando llega la alerta real (Sitio Caído), nadie responde.
 
 ---
 
@@ -14189,17 +15202,20 @@ Tener alertas PagerDuty para todo (Disco 80%, CPU 10%).
 **En una frase**: En la crisis, la disciplina vence al genio.
 
 **Cuándo usarlo**:
--   Siempre que haya degradación del servicio.
--   Practicarlo con "Game Days" (simulacros).
+
+- Siempre que haya degradación del servicio.
+- Practicarlo con "Game Days" (simulacros).
 
 **Siguiente paso**: Módulo 4 y 5. Hemos terminado el núcleo operativo. Pasamos a la **Carrera Profesional y Liderazgo Estratégico** (Módulo 4: El Liderazgo del General).
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.2_contenido.md -Raw
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Experimento**: ¿Cómo afecta el tamaño del lote a la velocidad de entrega?
 > [🏠 ABRIR SIMULACIÓN DE PIPELINE](../../simulaciones/simulacion_m1_pipeline.html)
 
 ## 📊 GRÁFICO: LA CURVA J DEL RETRASO
+
 `mermaid
 xychart-beta
     title "Costo de No Desplegar (Deuda de Inventario)"
@@ -14216,7 +15232,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -14233,9 +15249,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -14249,8 +15266,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -14273,14 +15290,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -14299,14 +15316,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -14315,11 +15336,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m1")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -14327,7 +15349,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -14344,9 +15366,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -14360,8 +15383,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -14384,14 +15407,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -14410,14 +15433,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -14426,12 +15453,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -14442,10 +15473,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 1.3.1: Layers
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.3_subtema_1.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -14454,7 +15487,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -14471,9 +15504,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -14487,8 +15521,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -14511,14 +15545,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -14537,14 +15571,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -14553,13 +15591,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -14570,9 +15610,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 ARQUITECTURA: DEFENSA EN CAPAS
+
 `mermaid
 graph BT
     L1[Capa Física (Difícil)] --> L2[Capa Lógica (Media)]
@@ -14591,7 +15632,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -14608,9 +15649,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -14624,8 +15666,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -14648,14 +15690,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -14674,14 +15716,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -14690,11 +15736,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -14702,7 +15749,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -14719,9 +15766,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -14735,8 +15783,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -14759,14 +15807,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -14785,14 +15833,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -14801,12 +15853,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -14817,13 +15873,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 2 ---
 
 # 2.1.1: Pets vs Cattle
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.1_subtema_2.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -14832,7 +15889,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -14849,9 +15906,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -14865,8 +15923,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -14889,14 +15947,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -14915,14 +15973,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -14931,13 +15993,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -14948,9 +16012,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: MASCOTAS VS GANADO
+
 `mermaid
 graph LR
     subgraph Pets [Mascotas (Tradicional)]
@@ -14972,7 +16037,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -14989,9 +16054,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -15005,8 +16071,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -15029,14 +16095,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -15055,14 +16121,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -15071,11 +16141,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -15083,7 +16154,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -15100,9 +16171,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -15116,8 +16188,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -15140,14 +16212,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -15166,14 +16238,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -15182,12 +16258,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -15198,10 +16278,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.2.1: Zheng/Qi + Sim Tokens
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.2_subtema_2.2.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -15210,7 +16292,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -15227,9 +16309,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -15243,8 +16326,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -15267,14 +16350,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -15293,14 +16376,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -15309,13 +16396,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -15326,13 +16415,15 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Reto**: Tienes 3 'Innovation Tokens'. ¿Puedes armar una arquitectura que no quiebre la empresa?
 > [🏠 ABRIR JUEGO DE ARCHITECTURA](../../simulaciones/simulacion_m2_tokens.html)
 
 ## 📊 DISTRIBUCIÓN ÓPTIMA
+
 `mermaid
 pie title "Distribución de Arquitectura Sana"
     "Zheng (Estándar/Aburrido)" : 80
@@ -15347,7 +16438,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -15364,9 +16455,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -15380,8 +16472,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -15404,14 +16496,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -15430,14 +16522,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -15446,11 +16542,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "simulacion_m2")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -15458,7 +16555,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -15475,9 +16572,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -15491,8 +16589,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -15515,14 +16613,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -15541,14 +16639,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -15557,12 +16659,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -15573,10 +16679,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 2.3.2: Swarming
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_2\tema_2.3_subtema_2.3.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -15585,7 +16693,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -15602,9 +16710,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -15618,8 +16727,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -15642,14 +16751,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -15668,14 +16777,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -15684,13 +16797,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -15701,9 +16816,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 TÁCTICA: SWARMING VS DISPERSIÓN
+
 `mermaid
 graph TD
     subgraph Escenario_Malo [Dispersión]
@@ -15728,7 +16844,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -15745,9 +16861,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -15761,8 +16878,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -15785,14 +16902,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -15811,14 +16928,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -15827,11 +16948,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -15839,7 +16961,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -15856,9 +16978,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -15872,8 +16995,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -15896,14 +17019,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -15922,14 +17045,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -15938,12 +17065,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -15954,13 +17085,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
-
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # --- MODULO 3 ---
 
 # 3.1.1: Maniobra (Wizard of Oz)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.1_subtema_3.1.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -15969,7 +17101,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -15986,9 +17118,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -16002,8 +17135,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -16026,14 +17159,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -16052,14 +17185,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -16068,13 +17205,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -16085,9 +17224,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 SECUENCIA: MAGO DE OZ
+
 `mermaid
 sequenceDiagram
     participant U as Usuario
@@ -16108,7 +17248,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -16125,9 +17265,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -16141,8 +17282,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -16165,14 +17306,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -16191,14 +17332,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -16207,11 +17352,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -16219,7 +17365,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -16236,9 +17382,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -16252,8 +17399,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -16276,14 +17423,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -16302,14 +17449,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -16318,12 +17469,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -16334,10 +17489,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.2.2 Intelligence (Trace)
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.2_subtema_3.2.2_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -16346,7 +17503,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -16363,9 +17520,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -16379,8 +17537,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -16403,14 +17561,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -16429,14 +17587,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -16445,13 +17607,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -16462,9 +17626,10 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 📊 VISUALIZACIÓN: DISTRIBUTED TRACING
+
 `mermaid
 gantt
     title Trace ID: abc-123 (Cascada de Latencia)
@@ -16488,7 +17653,7 @@ if (-not (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -16505,9 +17670,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -16521,8 +17687,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -16545,14 +17711,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -16571,14 +17737,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -16587,11 +17757,12 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- -match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
+-match "mermaidd")) { Set-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Value (# ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
 **Nivel**: Intermedio
@@ -16599,7 +17770,7 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -16616,9 +17787,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -16632,8 +17804,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -16656,14 +17828,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -16682,14 +17854,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -16698,12 +17874,16 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- + 
+
+-
+
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -16714,10 +17894,12 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*) -Encoding UTF8 }
+_Fig 1.1: El ciclo de influencia de los 5 factores._) -Encoding UTF8 }
 
 # 3.3.1 Chaos Sim
+
 e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md = "e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_3\tema_3.3_subtema_3.3.1_contenido.md"
+
 # ECONOMÍA DEL CYCLE TIME: EL COSTO DE LA GUERRA PROLONGADA
 
 **Tiempo estimado**: 40 minutos
@@ -16726,7 +17908,7 @@ e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tz
 
 ## ¿Por qué importa este concepto?
 
-En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*. 
+En desarrollo de software, el enemigo más peligroso no es un hacker, sino el **tiempo**. Sun Tzu escribió hace 2500 años: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 
 En ingeniería, esto es una ley física: **Ningún proyecto mejora cuanto más tiempo pasa en "WIP" (Work In Progress)**. El código no entregado se pudre (merge conflicts, cambios de requisitos, fatiga del equipo/Stakeholders).
 
@@ -16743,9 +17925,10 @@ En el Tema 1.1 evaluamos si debíamos pelear (Viabilidad). Ahora que hemos decid
 ### La Ley de la Guerra Prolongada
 
 Imagina que tu equipo es un ejército asediando una ciudad (el problema técnico). Cada día que pasa sin conquistar la ciudad:
-1.  **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
-2.  **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
-3.  **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
+
+1. **Se consumen recursos**: Salarios, nube, licencias (Burn-rate).
+2. **Las armas se desafilan**: La motivación del equipo decae, la atención se fragmenta.
+3. **El enemigo se fortalece**: La competencia avanza, o el problema técnico muta (nuevos requisitos).
 
 **Conclusión Estratégica**: La velocidad no es una "feature"; es la base de la viabilidad económica. Un proyecto imperfecto entregado hoy vale más que uno perfecto entregado el próximo año.
 
@@ -16759,8 +17942,8 @@ Mantener un contexto mental complejo ("tengo 5 ramas abiertas y 3 features a med
 
 ### Cycle Time vs. Lead Time
 
--   **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
--   **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
+- **Lead Time**: Desde que el cliente pide algo hasta que lo recibe. (Visión del Negocio).
+- **Cycle Time**: Desde que el ingeniero empieza a codificar hasta que está en producción. (Visión de Ingeniería).
 
 Nuestro objetivo estratégico es minimizar el **Cycle Time** para maximizar el aprendizaje.
 
@@ -16783,14 +17966,14 @@ def calcular_costo_retraso(equipo_size, burn_rate_mensual, meses_retraso, valor_
     """
     # 1. Costo directo (Salarios + Infra)
     costo_operativo = burn_rate_mensual * meses_retraso
-    
+
     # 2. Costo de Oportunidad (Lo que no ganamos por no estar en prod)
     lucro_cesante = valor_mensual_esperado * meses_retraso
-    
+
     # 3. Costo Moral (Difícil de cuantificar, usamos multiplicador heurístico)
     # Después de 3 meses de retraso, la productividad baja un 20%
     factor_fatiga = 1.2 if meses_retraso > 3 else 1.0
-    
+
     total_loss = (costo_operativo + lucro_cesante) * factor_fatiga
     return total_loss
 
@@ -16809,14 +17992,18 @@ Este cálculo es lo que debes presentar al "Soberano" (Negocio) cuando piden cam
 ## Trampas y errores comunes
 
 ### ❌ Error: "Gold Plating" (Blindar la armadura)
+
 Seguir puliendo el código o añadiendo features menores antes del primer release.
--   **Sun Tzu dice**: *"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."*
--   **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
+
+- **Sun Tzu dice**: _"He oído hablar de operaciones militares torpes pero rápidas; nunca he visto una operación hábil que fuera prolongada."_
+- **Corrección**: MVP real. Shippear lo mínimo viable para cerrar el ciclo.
 
 ### ❌ Error: Lotes Grandes (Big Batch Size)
+
 Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
--   **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
--   **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
+
+- **Problema**: El riesgo de bugs aumenta exponencialmente con el tamaño del cambio.
+- **Corrección**: Despliegues continuos. "Divide y vencerás" se aplica literalmente a los PRs.
 
 ---
 
@@ -16825,13 +18012,15 @@ Intentar desplegar el "Módulo Completo" (3 meses de trabajo) de golpe.
 **En una frase**: La guerra es cara; entra rápido, gana rápido, sal rápido.
 
 **Cuándo usarlo**:
--   Durante el Planning, para cortar alcance agresivamente.
--   Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
+
+- Durante el Planning, para cortar alcance agresivamente.
+- Cuando el Stakeholder pide "solo un cambio pequeño más" antes del release.
 
 **Siguiente paso**: Veremos cómo la **Automatización** es el sistema logístico que permite esta velocidad en el **Tema 1.2.2**.
- = Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
+= Get-Content e:\MyRepos\education\teach-laoz-courses-generator\cursos\teach-laoz-curso-sun-tzu-production\modulos\modulo_1\tema_1.2_subtema_1.2.1_contenido.md -Raw
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -16842,12 +18031,14 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.* = @"
+_Fig 1.1: El ciclo de influencia de los 5 factores._ = @"
 
 ## 🔬 SIMULACIÓN INTERACTIVA
+
 > **Laboratorio**: Tienes acceso a la consola de Chaos Monkey. Destruye servidores y observa si el sistema se recupera.
 > [🏠 ABRIR CONSOLA DE CAOS](../../simulaciones/simulacion_m3_chaos.html) = @"
 
 ## �� ACCESO AL WAR ROOM
+
 > **ALERTA**: El sistema está caído. Entra a la sala de situación y toma el mando.
 > [🏠 ENTRAR AL WAR ROOM](../../simulaciones/simulacion_m5_warroom.html)

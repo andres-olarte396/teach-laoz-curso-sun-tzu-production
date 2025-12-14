@@ -1,6 +1,7 @@
 # GUIÓN: EL MAPA NO ES EL TERRITORIO (MÉTRICAS)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 12 Minutos
 - **Tono**: Escéptico, inquisitivo.
 
@@ -58,7 +59,7 @@ Deja de usar promedios. Los promedios esconden los cadáveres.
 ### 09:00 - CIERRE
 
 **[LOCUTOR]**:
-Sun Tzu dice: *"Conoce al enemigo"*.
+Sun Tzu dice: _"Conoce al enemigo"_.
 El enemigo no es la CPU alta. El enemigo es la frustración del usuario.
 Reconfigura tus alertas hoy.
 Si suena una alarma a las 3 AM, que sea porque un cliente está sufriendo, no porque un disco está lleno.

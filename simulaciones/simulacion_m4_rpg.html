@@ -1,111 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Simulación M4: Liderazgo RPG</title>
     <style>
-        body { font-family: 'Georgia', serif; background: #fdf6e3; color: #333; max-width: 700px; margin: 40px auto; padding: 20px; line-height: 1.6; }
-        .scene { background: #fff; padding: 20px; border: 1px solid #ccc; box-shadow: 5px 5px 15px rgba(0,0,0,0.1); }
-        .choice { display: block; background: #eee; padding: 10px; margin: 10px 0; text-decoration: none; color: #333; border-left: 4px solid #aaa; transition: 0.3s; cursor: pointer; }
-        .choice:hover { border-left-color: #d33682; background: #f0f0f0; padding-left: 15px; }
-        .stats { display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: bold; }
+      body {
+        font-family: "Georgia", serif;
+        background: #fdf6e3;
+        color: #333;
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .scene {
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      .choice {
+        display: block;
+        background: #eee;
+        padding: 10px;
+        margin: 10px 0;
+        text-decoration: none;
+        color: #333;
+        border-left: 4px solid #aaa;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .choice:hover {
+        border-left-color: #d33682;
+        background: #f0f0f0;
+        padding-left: 15px;
+      }
+      .stats {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Módulo 4: Decisiones de un General</h1>
-    
+
     <div class="stats">
-        <span>Moral del Equipo: <span id="moral">50</span>%</span>
-        <span>Capital Político: <span id="capital">50</span>%</span>
+      <span>Moral del Equipo: <span id="moral">50</span>%</span>
+      <span>Capital Político: <span id="capital">50</span>%</span>
     </div>
 
     <div id="game-container" class="scene">
-        <!-- Content injected via JS -->
+      <!-- Content injected via JS -->
     </div>
 
     <script>
-        const state = { moral: 50, capital: 50 };
-        
-        const scenes = {
-            start: {
-                text: "Eres el nuevo Tech Lead. Es tu primera semana. El CEO entra en tu oficina: 'Necesito que lances la nueva App el viernes. Sé que dijiste el lunes, pero tengo inversores'. El equipo ya está cansado.",
-                choices: [
-                    { text: "Aceptar (Sumisión): 'Claro jefe, lo haremos'. (Ordenas horas extra)", next: 'accept_burnout' },
-                    { text: "Negociar (Sun Tzu): 'Entiendo la prisa. Podemos lanzar una versión Beta el viernes con la mitad de features. La versión Full requiere hasta el lunes por seguridad'.", next: 'negotiate' },
-                    { text: "Pelear (Agresión): '¡Imposible! ¡No tienes idea de lo que pides!'", next: 'fight' }
-                ]
-            },
-            accept_burnout: {
-                text: "El CEO se va feliz. El equipo recibe la noticia con silencio sepulcral. Trabajan hasta las 2 AM toda la semana. El viernes lanzan.",
-                effect: { moral: -30, capital: +10 },
-                choices: [
-                    { text: "Ver el resultado del lanzamiento ->", next: 'crash_burnout' }
-                ]
-            },
-            negotiate: {
-                text: "El CEO duda, pero acepta la 'Versión Beta' porque le sirve para la demo. El equipo agradece no tener que hacer 'Crunch' (Horas extra).",
-                effect: { moral: +10, capital: +5 },
-                choices: [
-                    { text: "Ver el resultado del lanzamiento ->", next: 'success_negotiate' }
-                ]
-            },
-            fight: {
-                text: "El CEO se ofende. Te etiqueta como 'problemático'. El equipo te admira en secreto, pero temen por sus empleos.",
-                effect: { moral: +5, capital: -40 },
-                choices: [
-                    { text: "Continuar ->", next: 'fired_risk' }
-                ]
-            },
-            crash_burnout: {
-                text: "La aplicación lanza con errores críticos por falta de sueño. El CEO está furioso. El mejor desarrollador renuncia el lunes.",
-                end: true,
-                result: "DERROTA. Sacrificaste el ejército (Moral) por una victoria pírrica."
-            },
-            success_negotiate: {
-                text: "La demo sale bien. Faltan cosas, pero no hay bugs. El equipo está fresco para terminar el lunes.",
-                end: true,
-                result: "VICTORIA. Has protegido al ejército y cumplido la misión (Puente Dorado)."
-            },
-            fired_risk: {
-                text: "Al final te obligan a hacerlo de todos modos. Perdiste capital político y no protegiste al equipo.",
-                end: true,
-                result: "DERROTA. Coraje sin Sabiduría es imprudencia."
-            }
-        };
+      const state = { moral: 50, capital: 50 };
 
-        function renderScene(sceneId) {
-            const scene = scenes[sceneId];
-            
-            // Apply effects
-            if (scene.effect) {
-                state.moral += (scene.effect.moral || 0);
-                state.capital += (scene.effect.capital || 0);
-                updateStats();
-            }
+      const scenes = {
+        start: {
+          text: "Eres el nuevo Tech Lead. Es tu primera semana. El CEO entra en tu oficina: 'Necesito que lances la nueva App el viernes. Sé que dijiste el lunes, pero tengo inversores'. El equipo ya está cansado.",
+          choices: [
+            {
+              text: "Aceptar (Sumisión): 'Claro jefe, lo haremos'. (Ordenas horas extra)",
+              next: "accept_burnout",
+            },
+            {
+              text: "Negociar (Sun Tzu): 'Entiendo la prisa. Podemos lanzar una versión Beta el viernes con la mitad de features. La versión Full requiere hasta el lunes por seguridad'.",
+              next: "negotiate",
+            },
+            {
+              text: "Pelear (Agresión): '¡Imposible! ¡No tienes idea de lo que pides!'",
+              next: "fight",
+            },
+          ],
+        },
+        accept_burnout: {
+          text: "El CEO se va feliz. El equipo recibe la noticia con silencio sepulcral. Trabajan hasta las 2 AM toda la semana. El viernes lanzan.",
+          effect: { moral: -30, capital: +10 },
+          choices: [
+            {
+              text: "Ver el resultado del lanzamiento ->",
+              next: "crash_burnout",
+            },
+          ],
+        },
+        negotiate: {
+          text: "El CEO duda, pero acepta la 'Versión Beta' porque le sirve para la demo. El equipo agradece no tener que hacer 'Crunch' (Horas extra).",
+          effect: { moral: +10, capital: +5 },
+          choices: [
+            {
+              text: "Ver el resultado del lanzamiento ->",
+              next: "success_negotiate",
+            },
+          ],
+        },
+        fight: {
+          text: "El CEO se ofende. Te etiqueta como 'problemático'. El equipo te admira en secreto, pero temen por sus empleos.",
+          effect: { moral: +5, capital: -40 },
+          choices: [{ text: "Continuar ->", next: "fired_risk" }],
+        },
+        crash_burnout: {
+          text: "La aplicación lanza con errores críticos por falta de sueño. El CEO está furioso. El mejor desarrollador renuncia el lunes.",
+          end: true,
+          result:
+            "DERROTA. Sacrificaste el ejército (Moral) por una victoria pírrica.",
+        },
+        success_negotiate: {
+          text: "La demo sale bien. Faltan cosas, pero no hay bugs. El equipo está fresco para terminar el lunes.",
+          end: true,
+          result:
+            "VICTORIA. Has protegido al ejército y cumplido la misión (Puente Dorado).",
+        },
+        fired_risk: {
+          text: "Al final te obligan a hacerlo de todos modos. Perdiste capital político y no protegiste al equipo.",
+          end: true,
+          result: "DERROTA. Coraje sin Sabiduría es imprudencia.",
+        },
+      };
 
-            let html = `<p>${scene.text}</p>`;
-            
-            if (scene.end) {
-                html += `<h3>${scene.result}</h3>`;
-                html += `<button onclick="location.reload()">Jugar de nuevo</button>`;
-            } else {
-                html += scene.choices.map(c => `<div class="choice" onclick="renderScene('${c.next}')">${c.text}</div>`).join('');
-            }
-            
-            document.getElementById('game-container').innerHTML = html;
+      function renderScene(sceneId) {
+        const scene = scenes[sceneId];
+
+        // Apply effects
+        if (scene.effect) {
+          state.moral += scene.effect.moral || 0;
+          state.capital += scene.effect.capital || 0;
+          updateStats();
         }
 
-        function updateStats() {
-            document.getElementById('moral').innerText = state.moral;
-            document.getElementById('capital').innerText = state.capital;
-            
-            // Visual feedback colors
-            document.getElementById('moral').style.color = state.moral < 30 ? 'red' : 'green';
-            document.getElementById('capital').style.color = state.capital < 30 ? 'red' : 'green';
+        let html = `<p>${scene.text}</p>`;
+
+        if (scene.end) {
+          html += `<h3>${scene.result}</h3>`;
+          html += `<button onclick="location.reload()">Jugar de nuevo</button>`;
+        } else {
+          html += scene.choices
+            .map(
+              (c) =>
+                `<div class="choice" onclick="renderScene('${c.next}')">${c.text}</div>`,
+            )
+            .join("");
         }
 
-        // Start
-        renderScene('start');
+        document.getElementById("game-container").innerHTML = html;
+      }
+
+      function updateStats() {
+        document.getElementById("moral").innerText = state.moral;
+        document.getElementById("capital").innerText = state.capital;
+
+        // Visual feedback colors
+        document.getElementById("moral").style.color =
+          state.moral < 30 ? "red" : "green";
+        document.getElementById("capital").style.color =
+          state.capital < 30 ? "red" : "green";
+      }
+
+      // Start
+      renderScene("start");
     </script>
-</body>
+  </body>
 </html>

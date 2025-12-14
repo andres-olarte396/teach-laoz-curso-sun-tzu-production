@@ -1,6 +1,7 @@
 # GUIÓN: ECONOMÍA DEL CYCLE TIME
 
 ## FICHA TÉCNICA
+
 - **Duración**: 10 Minutos
 - **Tono**: Pragmático, enfocado en dinero y eficiencia.
 
@@ -15,7 +16,7 @@ Mientras está en Code Review, el taxímetro corre.
 Solo se detiene cuando el usuario lo usa.
 
 **[LOCUTOR]**:
-Sun Tzu lo dijo claro: *"No hay ejemplo de una nación que se beneficie de una guerra prolongada"*.
+Sun Tzu lo dijo claro: _"No hay ejemplo de una nación que se beneficie de una guerra prolongada"_.
 En nuestra profesión, la "Guerra Prolongada" tiene un nombre: **Lead Time alto**.
 Hoy vamos a hablar de dinero. De por qué la velocidad no es vanidad, es supervivencia.
 
@@ -42,7 +43,7 @@ Y eso sin contar el costo moral: un equipo que no entrega se desmotiva. La fatig
 
 **[LOCUTOR]**:
 Entonces, ¿cómo aceleramos sin sacrificar calidad?
-Sun Tzu dice: *"El general inteligente se alimenta del enemigo"*.
+Sun Tzu dice: _"El general inteligente se alimenta del enemigo"_.
 Esto significa: No muevas todo a mano. Usa el terreno.
 En software, esto es **Automatización y Open Source**.
 

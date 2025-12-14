@@ -1,6 +1,7 @@
 # GUIÓN: MOMENTUM DE RELEASE
 
 ## FICHA TÉCNICA
+
 - **Duración**: 10 Minutos
 - **Tono**: Enérgico, motivador.
 
@@ -9,7 +10,7 @@
 ### 00:00 - INTRODUCCIÓN
 
 **[LOCUTOR]**:
-Sun Tzu dice: *"Cuando el agua lanza piedras, es por su momentum"*.
+Sun Tzu dice: _"Cuando el agua lanza piedras, es por su momentum"_.
 En física, momentum es masa por velocidad.
 En software, momentum es la sensación de que el proyecto se mueve imparable hacia adelante.
 

@@ -1,6 +1,7 @@
 # GUIÓN: LAS 9 VARIACIONES (CHAOS ENGINEERING)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 12 Minutos
 - **Tono**: Desafiante, provocador.
 
@@ -38,10 +39,11 @@ Apagamos un servidor un martes a las 10 AM, con todo el equipo mirando.
 **[LOCUTOR]**:
 No es entrar al data center con un hacha a lo loco.
 Es el método científico.
-1.  Hipótesis: "Si desconecto el cable de red de la base de datos, la app debería mostrar datos en caché".
-2.  Experimento: Desconectar cable.
-3.  Observación: La app mostró un error 500 horrible.
-4.  Conclusión: Nuestra caché no funciona. ¡A arreglarlo!
+
+1. Hipótesis: "Si desconecto el cable de red de la base de datos, la app debería mostrar datos en caché".
+2. Experimento: Desconectar cable.
+3. Observación: La app mostró un error 500 horrible.
+4. Conclusión: Nuestra caché no funciona. ¡A arreglarlo!
 
 **[LOCUTOR]**:
 Si no haces esto tú, el universo lo hará por ti.

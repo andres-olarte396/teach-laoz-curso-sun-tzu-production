@@ -1,6 +1,7 @@
 # GUIÓN: EL ARTE DEL DESVÍO (FEATURE FLAGS)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 10 Minutos
 - **Tono**: Técnico avanzado. Control total.
 
@@ -35,7 +36,7 @@ Eso es poder.
 ### 06:00 - SEGMENTACIÓN DEL CAMPO DE BATALLA
 
 **[LOCUTOR]**:
-Sun Tzu dice: *"Divide y vencerás"*.
+Sun Tzu dice: _"Divide y vencerás"_.
 ¿Por qué luchar contra 1 millón de usuarios a la vez?
 Usa flags para luchar contra 10 usuarios primero (Canary release).
 Luego 100.

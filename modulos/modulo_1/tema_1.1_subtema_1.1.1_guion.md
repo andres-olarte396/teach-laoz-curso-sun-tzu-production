@@ -1,6 +1,7 @@
 # GUIÓN: TAO Y CLIMA
 
 ## FICHA TÉCNICA
+
 - **Duración**: 10 Minutos
 - **Tono**: Autoritario pero mentor (Senior a Senior). Serio, directo, estratégico.
 
@@ -24,7 +25,7 @@ Hoy, en el primer nivel del Modelo de 5 Factores, aprenderemos a no pelear batal
 ### 02:00 - EL TAO (PROPÓSITO)
 
 **[LOCUTOR]**:
-Sun Tzu dice: *"El Tao hace que el pueblo esté en completa armonía con su gobernante"*.
+Sun Tzu dice: _"El Tao hace que el pueblo esté en completa armonía con su gobernante"_.
 
 **[LOCUTOR]**: (Tono explicativo)
 En nuestro mundo, el "Gobernante" es el Negocio. El "Pueblo" son los Usuarios. Y tú, el "General", eres la Ingeniería.
@@ -60,6 +61,7 @@ Eso es pelear contra el clima.
 
 **[LOCUTOR]**:
 Antes de aceptar tu próxima misión o ticket de Jira, haz el "Chequeo de 5 Factores".
+
 1. **Tao**: ¿Está alineado el propósito?
 2. **Clima**: ¿Es el momento correcto?
 

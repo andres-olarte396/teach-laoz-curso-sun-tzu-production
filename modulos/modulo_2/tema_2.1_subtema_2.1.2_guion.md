@@ -1,6 +1,7 @@
 # GUIÓN: CAPACIDAD DE ERROR (ERROR BUDGET)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 10 Minutos
 - **Tono**: SRE, Matemático, Calculador.
 
@@ -12,7 +13,7 @@
 Muchos managers piensan que el objetivo de Sistemas es que "nunca falle nada".
 Eso es un error estratégico.
 Si nunca falla nada, significa que no te estás moviendo lo suficientemente rápido.
-Sun Tzu dice: *"El experto en ataque se mueve desde las alturas del cielo"*. Para atacar, debes arriesgar.
+Sun Tzu dice: _"El experto en ataque se mueve desde las alturas del cielo"_. Para atacar, debes arriesgar.
 
 **[LOCUTOR]**:
 Hoy hablamos del concepto más poderoso de Google SRE: El Error Budget.

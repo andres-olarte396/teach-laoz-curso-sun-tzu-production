@@ -1,6 +1,7 @@
 # GUIÓN: SHARDING DE ATENCIÓN (VACÍOS Y PLENITUDES)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 10 Minutos
 - **Tono**: Estratégico, analítico.
 
@@ -10,7 +11,7 @@
 
 **[LOCUTOR]**:
 Sun Tzu tiene un concepto místico llamado "Xu" (Vacío) y "Shi" (Plenitud).
-Dice: *"Eres victorioso si atacas el vacío con tu plenitud"*.
+Dice: _"Eres victorioso si atacas el vacío con tu plenitud"_.
 Suena a galleta de la fortuna, pero es la base de la eficiencia en ingeniería.
 
 **[LOCUTOR]**:

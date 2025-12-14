@@ -1,6 +1,7 @@
 # GUIÓN: ORQUESTACIÓN (MÉTODOS DIRECTOS E INDIRECTOS)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 12 Minutos
 - **Tono**: Filosófico pero práctico.
 
@@ -10,7 +11,7 @@
 
 **[LOCUTOR]**:
 En el capítulo 5, Sun Tzu nos regala una joya:
-*"En la batalla, solo hay dos fuerzas: la normal (Zheng) y la extraordinaria (Qi). Pero su combinación es infinita como el cielo y la tierra"*.
+_"En la batalla, solo hay dos fuerzas: la normal (Zheng) y la extraordinaria (Qi). Pero su combinación es infinita como el cielo y la tierra"_.
 
 **[LOCUTOR]**:
 Traduzcamos esto a Ingeniería.

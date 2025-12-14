@@ -4,15 +4,15 @@
 
 ---
 
-# [🏳️ MÓDULO 0: FUNDAMENTOS DEL GUERRERO DIGITAL](./modulos/modulo_0/presentacion_modulo.md)
+## [🏳️ MÓDULO 0: FUNDAMENTOS DEL GUERRERO DIGITAL](./modulos/modulo_0/presentacion_modulo.md)
 
-## 📋 FICHA TÉCNICA
+### 📋 FICHA TÉCNICA
 
 - **Duración Estimada**: 1 hora 30 minutos.
 - **Objetivo**: Configurar el "Brainset" (Mentalidad) y el "Toolset" (Herramientas) necesarios para el resto del curso.
 - **Prerrequisitos**: Ninguno. Solo una computadora y curiosidad.
 
-## 🌟 INTRODUCCIÓN
+### 🌟 INTRODUCCIÓN
 
 Antes de hablar de tácticas o estrategia, debemos asegurar que el General (Tú) tenga las botas puestas y el mapa correcto.
 En este módulo no escribiremos código de producción, pero prepararemos el **Dojo** donde entrenaremos y definiremos las reglas de combate (Metodología de estudio).
@@ -21,7 +21,7 @@ En este módulo no escribiremos código de producción, pero prepararemos el **D
 
 ---
 
-## 🗺️ RUTA DE APRENDIZAJE DETALLADA
+### 🗺️ RUTA DE APRENDIZAJE DETALLADA
 
 #### 🧠 TEMA 0.1: PRECONCEPTOS Y MENTALIDAD
 
@@ -69,14 +69,14 @@ Para pasar al Módulo 1, debes poder decir "SÍ" a esto:
 
 ---
 
-# [⚔️ MÓDULO 1: LA ESTRATEGIA (EL TAO COMPILADO)](./modulos/modulo_1/presentacion_modulo.md)
+## [⚔️ MÓDULO 1: LA ESTRATEGIA (EL TAO COMPILADO)](./modulos/modulo_1/presentacion_modulo.md)
 
-## 📋 FICHA TÉCNICA
+### 📋 FICHA TÉCNICA MÓDULO 1
 
 - **Objetivo**: Aprender a pensar antes de escribir una sola línea de código. Entender el costo del tiempo y la defensa en capas.
 - **Concepto Clave**: _Zhi_ (Sabiduría) y cálculo de viabilidad.
 
-## 🌟 INTRODUCCIÓN
+### 🌟 INTRODUCCIÓN MÓDULO 1
 
 La mayoría de proyectos de software no fallan por mal código (tecnología), sino por mala estrategia (logística y propósito).
 Aquí aprenderás los "5 Factores" que determinan la victoria mucho antes de la batalla.
@@ -85,7 +85,7 @@ Aquí aprenderás los "5 Factores" que determinan la victoria mucho antes de la 
 
 ---
 
-## 🗺️ RUTA DE APRENDIZAJE
+### 🗺️ RUTA DE APRENDIZAJE
 
 #### 🏔️ TEMA 1.1: LOS 5 FACTORES
 
@@ -109,7 +109,7 @@ Aquí aprenderás los "5 Factores" que determinan la victoria mucho antes de la 
 
 ---
 
-## 🏁 EVALUACIÓN DE MÓDULO
+### 🏁 EVALUACIÓN DE MÓDULO
 
 - [Quiz: Estrategia Fundamental](modulos/modulo_1/tema_1.1_evaluacion.md)
 
@@ -119,14 +119,14 @@ Aquí aprenderás los "5 Factores" que determinan la victoria mucho antes de la 
 
 ---
 
-# [🏗️ MÓDULO 2: ARQUITECTURA (EL TERRENO)](./modulos/modulo_2/presentacion_modulo.md)
+## [🏗️ MÓDULO 2: ARQUITECTURA (EL TERRENO)](./modulos/modulo_2/presentacion_modulo.md)
 
-## 📋 FICHA TÉCNICA
+### 📋 FICHA TÉCNICA MÓDULO 2
 
 - **Objetivo**: Diseñar sistemas que resistan el caos. Movernos de "Mascotas" a "Ganado".
 - **Concepto Clave**: _Shi_ (Momentum) y _Xu Shi_ (Vacío y Plenitud).
 
-## 🌟 INTRODUCCIÓN
+### 🌟 INTRODUCCIÓN MÓDULO 2
 
 Si la estrategia (M1) es el plan, la arquitectura (M2) es el castillo.
 Pero los castillos modernos están en la nube y son efímeros.
@@ -134,7 +134,7 @@ Aprenderemos a diseñar para la desechabilidad y la concentración de fuerzas.
 
 ---
 
-## 🗺️ RUTA DE APRENDIZAJE
+### 🗺️ RUTA DE APRENDIZAJE MÓDULO 2
 
 #### 🐮 TEMA 2.1: DISEÑO ANTI-FRÁGIL
 
@@ -154,7 +154,7 @@ Aprenderemos a diseñar para la desechabilidad y la concentración de fuerzas.
 
 ---
 
-## 🏁 EVALUACIÓN
+### 🏁 EVALUACIÓN
 
 - [Quiz: Arquitectura Defensiva](modulos/modulo_2/tema_2.1_evaluacion.md)
 
@@ -164,14 +164,14 @@ Aprenderemos a diseñar para la desechabilidad y la concentración de fuerzas.
 
 ---
 
-# [⚙️ MÓDULO 3: OPERACIONES (LA MANIOBRA)](./modulos/modulo_3/presentacion_modulo.md)
+## [⚙️ MÓDULO 3: OPERACIONES (LA MANIOBRA)](./modulos/modulo_3/presentacion_modulo.md)
 
-## 📋 FICHA TÉCNICA
+### 📋 FICHA TÉCNICA MÓDULO 3
 
 - **Objetivo**: Operar y sobrevivir en producción. Observabilidad y respuesta ante incidentes.
 - **Concepto Clave**: Manejo del caos y velocidad de adaptación.
 
-## 🌟 INTRODUCCIÓN
+### 🌟 INTRODUCCIÓN MÓDULO 3
 
 El plan nunca sobrevive al contacto con el enemigo.
 Cuando despliegas, empieza la verdadera batalla.
@@ -179,7 +179,7 @@ Aquí aprenderás a ver en la oscuridad (Observabilidad) y a reaccionar cuando t
 
 ---
 
-## 🗺️ RUTA DE APRENDIZAJE
+### 🗺️ RUTA DE APRENDIZAJE MÓDULO 3
 
 #### 🚩 TEMA 3.1: GESTIÓN DEL MOMENTUM
 
@@ -198,7 +198,7 @@ Aquí aprenderás a ver en la oscuridad (Observabilidad) y a reaccionar cuando t
 
 ---
 
-## 🏁 EVALUACIÓN
+### 🏁 EVALUACIÓN MÓDULO 3
 
 - [Quiz: Operaciones de Combate](modulos/modulo_3/tema_3.1_evaluacion.md)
 
@@ -208,14 +208,14 @@ Aquí aprenderás a ver en la oscuridad (Observabilidad) y a reaccionar cuando t
 
 ---
 
-# [🏖️ MÓDULO 4: LIDERAZGO Y POLÍTICA (EL GENERAL)](./modulos/modulo_4/presentacion_modulo.md)
+## [🏖️ MÓDULO 4: LIDERAZGO Y POLÍTICA (EL GENERAL)](./modulos/modulo_4/presentacion_modulo.md)
 
-## 📋 FICHA TÉCNICA
+### 📋 FICHA TÉCNICA MÓDULO 4
 
 - **Objetivo**: Transición de Senior Dev a Tech Lead/CTO. Gestión humana y política.
 - **Concepto Clave**: Las 5 Virtudes del Mando.
 
-## 🌟 INTRODUCCIÓN
+### 🌟 INTRODUCCIÓN MÓDULO 4
 
 El código es fácil; las personas son difíciles.
 Sun Tzu dedica gran parte de su obra a las cualidades del General.
@@ -223,7 +223,7 @@ Aprenderás a negociar, a cuidar a tu equipo (Benevolencia) y a exigir estándar
 
 ---
 
-## 🗺️ RUTA DE APRENDIZAJE
+### 🗺️ RUTA DE APRENDIZAJE MÓDULO 4
 
 #### 🧙 TEMA 4.1: LAS VIRTUDES DEL MANDO
 
@@ -241,7 +241,7 @@ Aprenderás a negociar, a cuidar a tu equipo (Benevolencia) y a exigir estándar
 
 ---
 
-## 🏁 EVALUACIÓN
+### 🏁 EVALUACIÓN MÓDULO 4
 
 - [Quiz: Liderazgo Estratégico](modulos/modulo_4/tema_4.1_evaluacion.md)
 
@@ -251,14 +251,14 @@ Aprenderás a negociar, a cuidar a tu equipo (Benevolencia) y a exigir estándar
 
 ---
 
-# [🎓 MÓDULO 5: TOOLKIT Y GRADUACIÓN](./modulos/modulo_5/presentacion_modulo.md)
+## [🎓 MÓDULO 5: TOOLKIT Y GRADUACIÓN](./modulos/modulo_5/presentacion_modulo.md)
 
-## 📋 FICHA TÉCNICA
+### 📋 FICHA TÉCNICA MÓDULO 5
 
 - **Objetivo**: Integración total de conocimientos bajo presión. Definición de doctrina personal.
 - **Tipo**: Simulación Capstone.
 
-## 🌟 INTRODUCCIÓN
+### 🌟 INTRODUCCIÓN MÓDULO 5
 
 Has llegado al final.
 Aquí no hay teoría nueva. Solo la aplicación brutal de lo aprendido.
@@ -266,7 +266,7 @@ Entrarás al "War Room" para salvar una empresa ficticia y escribirás tu propio
 
 ---
 
-## 🗺️ RUTA DE MISIÓN
+### 🗺️ RUTA DE MISIÓN MÓDULO 5
 
 #### 🚨 TEMA 5.1: EL WAR ROOM (SIMULACIÓN FINAL)
 
@@ -281,7 +281,7 @@ Entrarás al "War Room" para salvar una empresa ficticia y escribirás tu propio
 
 ---
 
-## 🏆 CIERRE DEL CURSO
+### 🏆 CIERRE DEL CURSO
 
 - [Evaluación Final: Certificación de General](modulos/modulo_5/modulo_5_evaluacion.md)
 - 🎓 **¡Felicidades!** Has completado el camino.

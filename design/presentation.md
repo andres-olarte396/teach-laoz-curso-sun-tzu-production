@@ -4,11 +4,11 @@
 
 ## **ENCABEZADO PRINCIPAL**
 
-### **SUN TZU EN PRODUCTION**  
+### **SUN TZU EN PRODUCTION**
 
-EL ARTE DE LA GUERRA PARA INGENIEROS DE SISTEMAS**
+EL ARTE DE LA GUERRA PARA INGENIEROS DE SISTEMAS\*\*
 
-*De la Estrategia Milenaria al Código Efectivo: Un Framework de Tres Vistas*
+_De la Estrategia Milenaria al Código Efectivo: Un Framework de Tres Vistas_
 
 ---
 
@@ -19,14 +19,14 @@ EL ARTE DE LA GUERRA PARA INGENIEROS DE SISTEMAS**
 Imagina enfrentarte a:
 
 - Un despliegue crítico que debe salir perfecto
-- Un problema de rendimiento que escala exponencialmente  
+- Un problema de rendimiento que escala exponencialmente
 - Una negociación técnica con stakeholders inflexibles
 - Un competidor que lanza features más rápido
 - Un sistema legacy que se resiste al cambio
 
 **Estos no son solo problemas técnicos. Son campos de batalla.**
 
-Por 2,500 años, *El Arte de la Guerra* de Sun Tzu ha sido el manual definitivo para navegar situaciones de alta complejidad, recursos limitados y competencia intensa. Pero hasta ahora, su sabiduría ha permanecido en el dominio abstracto de la estrategia general.
+Por 2,500 años, _El Arte de la Guerra_ de Sun Tzu ha sido el manual definitivo para navegar situaciones de alta complejidad, recursos limitados y competencia intensa. Pero hasta ahora, su sabiduría ha permanecido en el dominio abstracto de la estrategia general.
 
 **Hasta hoy.**
 
@@ -50,21 +50,21 @@ Sin embargo, los desafíos más críticos que enfrentas **trascienden lo técnic
 
 ### **NUESTRA SOLUCIÓN: EL FRAMEWORK DE TRES VISTAS**
 
-Hemos creado una metodología única que traduce cada capítulo de *El Arte de la Guerra* a tres perspectivas que todo ingeniero entiende instintivamente:
+Hemos creado una metodología única que traduce cada capítulo de _El Arte de la Guerra_ a tres perspectivas que todo ingeniero entiende instintivamente:
 
-#### **1. VISTA CONCEPTUAL** *(El "Qué" - Diagrama de Arquitectura)*
+#### **1. VISTA CONCEPTUAL** _(El "Qué" - Diagrama de Arquitectura)_
 
 - Modelamos cada principio estratégico como un **componente de sistema**
 - Visualizamos relaciones y dependencias como en un **diagrama de arquitectura**
 - Entendemos la "filosofía" como un **paradigma de diseño**
 
-#### **2. VISTA LÓGICA** *(El "Cómo" - Patrones de Diseño)*
+#### **2. VISTA LÓGICA** _(El "Cómo" - Patrones de Diseño)_
 
 - Convertimos las máximas de Sun Tzu en **patrones de diseño estratégico reutilizables**
 - Cada principio se vuelve un "template" aplicable a múltiples escenarios
 - Creamos un **catálogo de soluciones estratégicas** como tu propio SDK mental
 
-#### **3. VISTA DE EJECUCIÓN** *(El "Hacer" - Scripts y Checklists)*
+#### **3. VISTA DE EJECUCIÓN** _(El "Hacer" - Scripts y Checklists)_
 
 - Transformamos la teoría en **checklists accionables**
 - Desarrollamos **scripts de decisión** para situaciones críticas
@@ -99,25 +99,25 @@ Hemos creado una metodología única que traduce cada capítulo de *El Arte de l
 - Instalando el Framework de Tres Vistas
 - Metáforas de sistemas para conceptos estratégicos
 
-#### **MÓDULO 1: ANÁLISIS Y PLANIFICACIÓN ESTRATÉGICA** *(Cap. 1-3)*
+#### **MÓDULO 1: ANÁLISIS Y PLANIFICACIÓN ESTRATÉGICA** _(Cap. 1-3)_
 
 - El Modelo de 5-Factores para viabilidad de proyectos
 - Economía del Cycle Time y automatización como logística
 - El árbol de decisión "Resolver en Capas" para conflictos
 
-#### **MÓDULO 2: ARQUITECTURA DE SISTEMAS ESTRATÉGICOS** *(Cap. 4-6)*
+#### **MÓDULO 2: ARQUITECTURA DE SISTEMAS ESTRATÉGICOS** _(Cap. 4-6)_
 
 - Diseño de sistemas anti-frágiles (invencibilidad primero)
 - Orquestación de equipos y servicios (firmeza y momentum)
 - Principio de concentración y sharding de atención
 
-#### **MÓDULO 3: OPERACIONES Y TÁCTICAS** *(Cap. 7-9)*
+#### **MÓDULO 3: OPERACIONES Y TÁCTICAS** _(Cap. 7-9)_
 
 - Gestión del momentum de proyecto y rutas de escape
 - 9 Heurísticas para toma de decisiones en incidencias
 - Logística adaptativa para diferentes "terrenos" técnicos
 
-#### **MÓDULO 4: CONTEXTOS ESPECIALES Y CRISIS** *(Cap. 10-13)*
+#### **MÓDULO 4: CONTEXTOS ESPECIALES Y CRISIS** _(Cap. 10-13)_
 
 - Operar en 6 contextos organizacionales problemáticos
 - Gestión de crisis e incendios de producción
@@ -157,7 +157,7 @@ Hemos creado una metodología única que traduce cada capítulo de *El Arte de l
 Donde otros ven:
 
 - "Conócete a ti mismo" → Nosotros vemos: **Análisis de capacidades del sistema**
-- "Terreno" → Nosotros vemos: **Constraints de plataforma y ecosistema**  
+- "Terreno" → Nosotros vemos: **Constraints de plataforma y ecosistema**
 - "Logística" → Nosotros vemos: **Automatización y pipelines de CI/CD**
 - "Maniobra" → Nosotros vemos: **Refactoring incremental y feature flags**
 
@@ -167,7 +167,7 @@ Donde otros ven:
 
 ### **EL RESULTADO FINAL**
 
-Al completar este curso, no solo entenderás *El Arte de la Guerra*.
+Al completar este curso, no solo entenderás _El Arte de la Guerra_.
 
 **Tendrás un framework operativo que te permitirá:**
 
@@ -208,8 +208,8 @@ En el mundo de los sistemas, el "peligro" son las fallas en cascada, los plazos 
 
 ---
 
-*"La suprema excelencia en sistemas consiste en quebrar la resistencia del problema sin reescribir el sistema."*  
-*- Adaptación para Ingenieros, Capítulo 3*
+_"La suprema excelencia en sistemas consiste en quebrar la resistencia del problema sin reescribir el sistema."_  
+_- Adaptación para Ingenieros, Capítulo 3_
 
 ---
 

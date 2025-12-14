@@ -1,6 +1,7 @@
 # GUIÓN: GANAR POR DISEÑO
 
 ## FICHA TÉCNICA
+
 - **Duración**: 12 Minutos
 - **Tono**: Arquitectónico, visionario.
 
@@ -9,7 +10,7 @@
 ### 00:00 - INTRODUCCIÓN
 
 **[LOCUTOR]**:
-Sun Tzu dice: *"Los guerreros victoriosos ganan primero y luego van a la guerra"*.
+Sun Tzu dice: _"Los guerreros victoriosos ganan primero y luego van a la guerra"_.
 ¿Cómo se "gana primero" en software?
 Con **Arquitectura**.
 
@@ -41,7 +42,7 @@ Usa esto a tu favor.
 Ejemplo clásico: Frontend y Backend pelean por esquemas JSON.
 Solución de guerra (Capa 3): Reuniones, gritos, documentos de Word.
 Solución de diseño (Capa 2): GraphQL o Contratos Automatizados.
-El sistema *impide* el conflicto. Si rompes el contrato, no compila.
+El sistema _impide_ el conflicto. Si rompes el contrato, no compila.
 Haces que pelear sea imposible. Eso es ganar por diseño.
 
 ---

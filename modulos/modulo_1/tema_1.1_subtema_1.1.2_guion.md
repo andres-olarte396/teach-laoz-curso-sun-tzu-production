@@ -1,6 +1,7 @@
 # GUIÓN: TERRENO, LIDERAZGO Y MÉTODO
 
 ## FICHA TÉCNICA
+
 - **Duración**: 12 Minutos
 - **Tono**: Mentor Experimentado.
 

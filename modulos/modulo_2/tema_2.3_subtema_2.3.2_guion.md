@@ -1,6 +1,7 @@
 # GUIÓN: CONCENTRACIÓN DE FUERZA (SWARMING)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 12 Minutos
 - **Tono**: Cooperativo, intenso.
 
@@ -9,7 +10,7 @@
 ### 00:00 - INTRODUCCIÓN
 
 **[LOCUTOR]**:
-Sun Tzu dice: *"Cuando concentro mis fuerzas en un solo punto, mientras el enemigo divide las suyas en diez, ataco con diez a uno"*.
+Sun Tzu dice: _"Cuando concentro mis fuerzas en un solo punto, mientras el enemigo divide las suyas en diez, ataco con diez a uno"_.
 Matemáticas simples.
 
 **[LOCUTOR]**:
@@ -30,10 +31,11 @@ Suena ineficiente, ¿verdad? "Pago 5 sueldos para que escriba uno".
 **[LOCUTOR]**:
 Es falso.
 Cuando 5 cerebros atacan un problema:
-1.  Los bloqueos desaparecen en segundos.
-2.  El Code Review ocurre en tiempo real.
-3.  El conocimiento se comparte instantáneamente. No más silos.
-La tarea que a uno le tomaría 3 días (con esperas), al enjambre le toma 2 horas.
+
+1. Los bloqueos desaparecen en segundos.
+2. El Code Review ocurre en tiempo real.
+3. El conocimiento se comparte instantáneamente. No más silos.
+    La tarea que a uno le tomaría 3 días (con esperas), al enjambre le toma 2 horas.
 
 ---
 

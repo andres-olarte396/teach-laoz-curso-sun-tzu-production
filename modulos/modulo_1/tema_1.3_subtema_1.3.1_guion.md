@@ -1,6 +1,7 @@
 # GUIÓN: RESOLVER EN CAPAS
 
 ## FICHA TÉCNICA
+
 - **Duración**: 10 Minutos
 - **Tono**: Estratega astuto. Enfocado en "hacer menos para lograr más".
 
@@ -11,7 +12,7 @@
 **[LOCUTOR]**:
 El instinto primario del ingeniero es abrir el editor de código.
 Vemos un problema, y nuestros dedos buscan el teclado. Queremos construir.
-Pero Sun Tzu tiene una bofetada para nuestro ego: *"La suprema excelencia consiste en romper la resistencia del enemigo sin luchar"*.
+Pero Sun Tzu tiene una bofetada para nuestro ego: _"La suprema excelencia consiste en romper la resistencia del enemigo sin luchar"_.
 
 **[LOCUTOR]**:
 Luchar es programar. Programar es caro. Bugs, mantenimiento, deuda técnica.
@@ -27,7 +28,7 @@ Imagina un árbol de decisión.
 Llega un requerimiento difícil: "Quiero procesamiento en tiempo real".
 
 **[LOCUTOR]**:
-**Capa 1: Negocio**. ¿Podemos cambiar el requerimiento? ¿El usuario *realmente* necesita tiempo real, o solo quiere ver los datos al final del día?
+**Capa 1: Negocio**. ¿Podemos cambiar el requerimiento? ¿El usuario _realmente_ necesita tiempo real, o solo quiere ver los datos al final del día?
 Si logras cambiar la expectativa aquí, has ganado con 0 líneas de código. Victoria suprema.
 
 **[LOCUTOR]**:
@@ -49,7 +50,7 @@ Ese dev que se queda hasta las 3 AM escribiendo un algoritmo complejo para algo 
 Está gastando munición costosa en un objetivo irrelevante.
 
 **[LOCUTOR]**:
-Tu valor como Senior no es cuánto código escribes, sino cuánto código *evitas* escribir mientras entregas valor.
+Tu valor como Senior no es cuánto código escribes, sino cuánto código _evitas_ escribir mientras entregas valor.
 Negocia primero. Arquitectura después. Codifica al final.
 
 Nos vemos.

@@ -1,6 +1,7 @@
 # GUIÓN: PROTOCOLOS DE GUERRA (INCIDENT RESPONSE)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 10 Minutos
 - **Tono**: Disciplinado, militar, calmado.
 
@@ -15,7 +16,7 @@ Tu corazón se acelera. Tus manos sudan.
 Bienvenido al Incidente.
 
 **[LOCUTOR]**:
-Sun Tzu dice: *"El caos simulado nace de la disciplina"*.
+Sun Tzu dice: _"El caos simulado nace de la disciplina"_.
 Cuando todo arde, la única salvación es el Protocolo.
 Si improvisas, mueres.
 

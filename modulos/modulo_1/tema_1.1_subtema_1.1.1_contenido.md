@@ -84,13 +84,13 @@ def evaluar_viabilidad_estrategica(proyecto):
     """
     score_tao = evaluar_tao(proyecto.stakeholders, proyecto.equipo)
     score_clima = evaluar_clima(proyecto.deadline, proyecto.tecnologia)
-    
+
     if score_tao < 50:
         return 0, "ABORTAR: Falta de alineación. El equipo se amotinará o el cliente rechazará."
-    
+
     if score_clima < 40:
         return 0, "POSPONER: Ventana de mercado cerrada o tecnología inmadura."
-        
+
     return (score_tao + score_clima) / 2, "PROCEDER con cautela"
 
 def evaluar_tao(stakeholders, equipo):
@@ -168,9 +168,10 @@ Adoptar una herramienta que está muriendo (ej. SOAP en 2024 para una startup nu
 - Durante "Pivot" de producto.
 - En retrospectivas de fracasos.
 
-**Siguiente paso**: Una vez que sabemos que el *Por qué* y *Cuándo* son correctos, evaluaremos el *Dónde* (Terreno) y *Quién* (Liderazgo) en el **Tema 1.1.2**.
+**Siguiente paso**: Una vez que sabemos que el _Por qué_ y _Cuándo_ son correctos, evaluaremos el _Dónde_ (Terreno) y _Quién_ (Liderazgo) en el **Tema 1.1.2**.
 
 ## 📊 VISUALIZACIÓN ESTRATÉGICA: EL PENTÁGONO
+
 `mermaid
 graph TD
     Tao[Tao (Misión)] --> Clima
@@ -181,4 +182,4 @@ graph TD
     style Tao fill:#f9f,stroke:#333,stroke-width:4px
     style Terreno fill:#ccf,stroke:#333,stroke-width:2px
 `
-*Fig 1.1: El ciclo de influencia de los 5 factores.*
+_Fig 1.1: El ciclo de influencia de los 5 factores._

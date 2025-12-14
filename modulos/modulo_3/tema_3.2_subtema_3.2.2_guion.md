@@ -1,6 +1,7 @@
 # GUIÓN: REDES DE ESPIONAJE (OBSERVABILIDAD)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 10 Minutos
 - **Tono**: Investigador forense.
 
@@ -43,7 +44,7 @@ Conviertes una caja negra en una caja de cristal.
 
 **[LOCUTOR]**:
 Pero espiar cuesta dinero. Guardar trillones de logs es caro.
-Sun Tzu dice: *"No uses espías si no puedes pagarles"*.
+Sun Tzu dice: _"No uses espías si no puedes pagarles"_.
 La solución es el Muestreo (Sampling).
 No guardes todo. Guarda los errores. Guarda lo lento.
 Y tira a la basura el 99% de lo que salió bien. Lo que salió bien no te enseña nada.

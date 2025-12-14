@@ -35,9 +35,9 @@ Para dar por finalizado un tema, ejecutar:
 1. **Verificación de Existencia**: `Test-Path` para cada archivo requerido.
 2. **Verificación de Contenido**: Leer muestras para validar integridad (no archivos vacíos).
 3. **Validación Cruzada**:
-    - ¿El ejercicio usa los conceptos explicados en el contenido?
-    - ¿El guión refleja el contenido del tema?
-    - ¿La simulación demuestra el concepto teórico?
+   - ¿El ejercicio usa los conceptos explicados en el contenido?
+   - ¿El guión refleja el contenido del tema?
+   - ¿La simulación demuestra el concepto teórico?
 
 ## 4. ESTADO ACTUAL DEL CURSO (SUN TZU)
 

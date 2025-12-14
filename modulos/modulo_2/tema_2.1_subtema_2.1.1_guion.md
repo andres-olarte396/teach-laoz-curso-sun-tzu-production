@@ -1,6 +1,7 @@
 # GUIÓN: DEFENSA PRIMERO (INMUTABILIDAD)
 
 ## FICHA TÉCNICA
+
 - **Duración**: 12 Minutos
 - **Tono**: Defensivo, sólido, arquitectónico.
 
@@ -9,7 +10,7 @@
 ### 00:00 - INTRODUCCIÓN
 
 **[LOCUTOR]**:
-Sun Tzu dice: *"Los antiguos guerreros primero se hacían invencibles a sí mismos"*.
+Sun Tzu dice: _"Los antiguos guerreros primero se hacían invencibles a sí mismos"_.
 Nota el orden. Primero invencible. Luego victorioso.
 No buscas atacar bugs. Buscas crear un sistema donde los bugs no puedan esconderse.
 

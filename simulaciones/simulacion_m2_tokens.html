@@ -1,78 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Simulación M2: Innovation Tokens</title>
     <style>
-        body { font-family: 'Inter', sans-serif; background: #222; color: #ddd; max-width: 800px; margin: 0 auto; padding: 20px; }
-        .card { background: #333; padding: 15px; margin: 10px; border-left: 5px solid #555; cursor: pointer; }
-        .card:hover { background: #444; }
-        .selected { border-left-color: #0f0; background: #3a3a3a; }
-        .zheng { border-left-color: #4caf50; } /* Safe */
-        .qi { border-left-color: #f44336; } /* Risky */
-        #result { margin-top: 20px; font-weight: bold; font-size: 1.2em; padding: 10px; border-radius: 5px; text-align: center;}
-        .safe { background: #1b5e20; }
-        .bankrupt { background: #b71c1c; }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #222;
+        color: #ddd;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .card {
+        background: #333;
+        padding: 15px;
+        margin: 10px;
+        border-left: 5px solid #555;
+        cursor: pointer;
+      }
+      .card:hover {
+        background: #444;
+      }
+      .selected {
+        border-left-color: #0f0;
+        background: #3a3a3a;
+      }
+      .zheng {
+        border-left-color: #4caf50;
+      } /* Safe */
+      .qi {
+        border-left-color: #f44336;
+      } /* Risky */
+      #result {
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 1.2em;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .safe {
+        background: #1b5e20;
+      }
+      .bankrupt {
+        background: #b71c1c;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Módulo 2: Gastando Innovation Tokens</h1>
-    <p>Tienes <strong>3 Tokens de Innovación</strong>. Elige tu stack. Zheng (Estándar) cuesta 0. Qi (Nuevo) cuesta 1.</p>
-    
+    <p>
+      Tienes <strong>3 Tokens de Innovación</strong>. Elige tu stack. Zheng
+      (Estándar) cuesta 0. Qi (Nuevo) cuesta 1.
+    </p>
+
     <h3>Base de Datos</h3>
-    <div class="card zheng" onclick="select(this, 'db', 0)">PostgreSQL (Zheng - 0 Tokens)</div>
-    <div class="card qi" onclick="select(this, 'db', 1)">Datomic Cloud (Qi - 1 Token)</div>
-    <div class="card qi" onclick="select(this, 'db', 1)">Base de Datos de Grafos Custom en C++ (Qi - 1 Token)</div>
+    <div class="card zheng" onclick="select(this, 'db', 0)">
+      PostgreSQL (Zheng - 0 Tokens)
+    </div>
+    <div class="card qi" onclick="select(this, 'db', 1)">
+      Datomic Cloud (Qi - 1 Token)
+    </div>
+    <div class="card qi" onclick="select(this, 'db', 1)">
+      Base de Datos de Grafos Custom en C++ (Qi - 1 Token)
+    </div>
 
     <h3>Backend Language</h3>
-    <div class="card zheng" onclick="select(this, 'be', 0)">Java/Spring (Zheng - 0 Tokens)</div>
-    <div class="card zheng" onclick="select(this, 'be', 0)">Node.js (Zheng - 0 Tokens)</div>
-    <div class="card qi" onclick="select(this, 'be', 1)">Haskell (Qi - 1 Token)</div>
+    <div class="card zheng" onclick="select(this, 'be', 0)">
+      Java/Spring (Zheng - 0 Tokens)
+    </div>
+    <div class="card zheng" onclick="select(this, 'be', 0)">
+      Node.js (Zheng - 0 Tokens)
+    </div>
+    <div class="card qi" onclick="select(this, 'be', 1)">
+      Haskell (Qi - 1 Token)
+    </div>
 
     <h3>Frontend</h3>
-    <div class="card zheng" onclick="select(this, 'fe', 0)">React (Zheng - 0 Tokens)</div>
-    <div class="card qi" onclick="select(this, 'fe', 1)">Nuevo Framework que inventé ayer (Qi - 1 Token)</div>
+    <div class="card zheng" onclick="select(this, 'fe', 0)">
+      React (Zheng - 0 Tokens)
+    </div>
+    <div class="card qi" onclick="select(this, 'fe', 1)">
+      Nuevo Framework que inventé ayer (Qi - 1 Token)
+    </div>
 
     <h3>Infraestructura</h3>
-    <div class="card zheng" onclick="select(this, 'inf', 0)">Docker/K8s gestionado (Zheng - 0 Tokens)</div>
-    <div class="card qi" onclick="select(this, 'inf', 1)">Kubernetes "Bare Metal" en Raspberry Pis (Qi - 1 Token)</div>
+    <div class="card zheng" onclick="select(this, 'inf', 0)">
+      Docker/K8s gestionado (Zheng - 0 Tokens)
+    </div>
+    <div class="card qi" onclick="select(this, 'inf', 1)">
+      Kubernetes "Bare Metal" en Raspberry Pis (Qi - 1 Token)
+    </div>
 
-    <button onclick="calculate()" style="padding: 10px 20px; margin-top: 20px; font-size: 16px;">Evaluar Arquitectura</button>
+    <button
+      onclick="calculate()"
+      style="padding: 10px 20px; margin-top: 20px; font-size: 16px"
+    >
+      Evaluar Arquitectura
+    </button>
 
     <div id="result"></div>
 
     <script>
-        let choices = {};
+      let choices = {};
 
-        function select(element, category, cost) {
-            // Clear previous selection in category
-            document.querySelectorAll(`.card`).forEach(c => {
-               if(c.onclick.toString().includes(`'${category}'`)) c.classList.remove('selected');
-            });
-            element.classList.add('selected');
-            choices[category] = cost;
+      function select(element, category, cost) {
+        // Clear previous selection in category
+        document.querySelectorAll(`.card`).forEach((c) => {
+          if (c.onclick.toString().includes(`'${category}'`))
+            c.classList.remove("selected");
+        });
+        element.classList.add("selected");
+        choices[category] = cost;
+      }
+
+      function calculate() {
+        let totalTokens = 0;
+        for (let key in choices) totalTokens += choices[key];
+
+        const resultDiv = document.getElementById("result");
+        resultDiv.className = "";
+
+        if (Object.keys(choices).length < 4) {
+          resultDiv.innerText =
+            "¡Debes seleccionar una opción para cada categoría!";
+          return;
         }
 
-        function calculate() {
-            let totalTokens = 0;
-            for (let key in choices) totalTokens += choices[key];
-            
-            const resultDiv = document.getElementById('result');
-            resultDiv.className = '';
-            
-            if (Object.keys(choices).length < 4) {
-                resultDiv.innerText = "¡Debes seleccionar una opción para cada categoría!";
-                return;
-            }
-
-            if (totalTokens <= 3) {
-                resultDiv.innerText = `Tokens gastados: ${totalTokens}. ✅ ARQUITECTURA VIABLE. Has combinado estabilidad con innovación controlada.`;
-                resultDiv.classList.add('safe');
-            } else {
-                resultDiv.innerText = `Tokens gastados: ${totalTokens}. ❌ BANCARROTA COGNITIVA. Demasiadas tecnologías nuevas. Tu equipo no sabrá por qué falla el sistema.`;
-                resultDiv.classList.add('bankrupt');
-            }
+        if (totalTokens <= 3) {
+          resultDiv.innerText = `Tokens gastados: ${totalTokens}. ✅ ARQUITECTURA VIABLE. Has combinado estabilidad con innovación controlada.`;
+          resultDiv.classList.add("safe");
+        } else {
+          resultDiv.innerText = `Tokens gastados: ${totalTokens}. ❌ BANCARROTA COGNITIVA. Demasiadas tecnologías nuevas. Tu equipo no sabrá por qué falla el sistema.`;
+          resultDiv.classList.add("bankrupt");
         }
+      }
     </script>
-</body>
+  </body>
 </html>
