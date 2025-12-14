@@ -4,7 +4,7 @@
 
 ---
 
-# 🏳️ MÓDULO 0: FUNDAMENTOS DEL GUERRERO DIGITAL
+# [🏳️ MÓDULO 0: FUNDAMENTOS DEL GUERRERO DIGITAL](./modulos/modulo_0/presentacion_modulo.md)
 
 ## 📋 FICHA TÉCNICA
 
@@ -23,7 +23,7 @@ En este módulo no escribiremos código de producción, pero prepararemos el **D
 
 ## 🗺️ RUTA DE APRENDIZAJE DETALLADA
 
-### 🧠 TEMA 0.1: PRECONCEPTOS Y MENTALIDAD
+#### 🧠 TEMA 0.1: PRECONCEPTOS Y MENTALIDAD
 
 _Entendiendo por qué Sun Tzu sigue vigente 2,500 años después._
 
@@ -31,7 +31,7 @@ _Entendiendo por qué Sun Tzu sigue vigente 2,500 años después._
   - _Qué aprenderás_: La diferencia entre "Saber programar" y "Saber ganar".
 - ⚠️ **Advertencia**: No te saltes esto. Si entras al curso pensando solo en código, fallarás.
 
-### 🛠️ TEMA 0.2: CONFIGURACIÓN DEL DOJO
+#### 🛠️ TEMA 0.2: CONFIGURACIÓN DEL DOJO
 
 _Tu entorno de desarrollo es tu templo._
 
@@ -41,7 +41,7 @@ _Tu entorno de desarrollo es tu templo._
   - _Reto_: Levantar una base de datos en 2 minutos sin instalar nada.
 - 🎧 **Audio**: [Escucha el Guion (Mentalidad de Terreno)](modulos/modulo_0/tema_0.2_guion.md)
 
-### 📚 TEMA 0.3: METODOLOGÍA DE GUERRA
+#### 📚 TEMA 0.3: METODOLOGÍA DE GUERRA
 
 _Cómo estudiar para retener el 100%._
 
@@ -69,7 +69,7 @@ Para pasar al Módulo 1, debes poder decir "SÍ" a esto:
 
 ---
 
-# ⚔️ MÓDULO 1: LA ESTRATEGIA (EL TAO COMPILADO)
+# [⚔️ MÓDULO 1: LA ESTRATEGIA (EL TAO COMPILADO)](./modulos/modulo_1/presentacion_modulo.md)
 
 ## 📋 FICHA TÉCNICA
 
@@ -87,21 +87,21 @@ Aquí aprenderás los "5 Factores" que determinan la victoria mucho antes de la 
 
 ## 🗺️ RUTA DE APRENDIZAJE
 
-### 🏔️ TEMA 1.1: LOS 5 FACTORES
+#### 🏔️ TEMA 1.1: LOS 5 FACTORES
 
 - 📘 **Teoría**: [Tao, Clima, Terreno, Liderazgo, Método](modulos/modulo_1/tema_1.1_subtema_1.1.1_contenido.md)
   - _Aprenderás_: A evaluar si un proyecto "nació muerto" antes de empezarlo.
 - 🎮 **Ejercicios**: [Diagnóstico de Proyectos (Risk Assessment)](modulos/modulo_1/tema_1.1_subtema_1.1.1_ejercicios.md)
 - 🎧 **Audio**: [El Algoritmo de la Victoria](modulos/modulo_1/tema_1.1_subtema_1.1.1_guion.md)
 
-### ⏳ TEMA 1.2: ECONOMÍA DEL TIEMPO
+#### ⏳ TEMA 1.2: ECONOMÍA DEL TIEMPO
 
 - 📘 **Teoría**: [El Costo del Retraso y Cycle Time](modulos/modulo_1/tema_1.2_subtema_1.2.1_contenido.md)
   - _Aprenderás_: Por qué "hacerlo perfecto" suele ser la estrategia perdedora.
 - 🎮 **Ejercicios**: [Cálculo del Cost of Delay](modulos/modulo_1/tema_1.2_subtema_1.2.1_ejercicios.md)
 - 🖥️ **Simulación**: [Pipeline Lead Time](simulaciones/simulacion_m1_pipeline.html)
 
-### 🛡️ TEMA 1.3: ESTRATEGIA OFENSIVA
+#### 🛡️ TEMA 1.3: ESTRATEGIA OFENSIVA
 
 - 📘 **Teoría**: [Resolver en Capas y Ganar por Diseño](modulos/modulo_1/tema_1.3_subtema_1.3.1_contenido.md)
   - _Aprenderás_: A atacar la complejidad donde es más débil (Capa Lógica vs Física).
@@ -119,7 +119,7 @@ Aquí aprenderás los "5 Factores" que determinan la victoria mucho antes de la 
 
 ---
 
-# 🏗️ MÓDULO 2: ARQUITECTURA (EL TERRENO)
+# [🏗️ MÓDULO 2: ARQUITECTURA (EL TERRENO)](./modulos/modulo_2/presentacion_modulo.md)
 
 ## 📋 FICHA TÉCNICA
 
@@ -136,18 +136,18 @@ Aprenderemos a diseñar para la desechabilidad y la concentración de fuerzas.
 
 ## 🗺️ RUTA DE APRENDIZAJE
 
-### 🐮 TEMA 2.1: DISEÑO ANTI-FRÁGIL
+#### 🐮 TEMA 2.1: DISEÑO ANTI-FRÁGIL
 
 - 📘 **Teoría**: [Infraestructura Inmutable (Cattle/Pets)](modulos/modulo_2/tema_2.1_subtema_2.1.1_contenido.md)
 - 🎮 **Ejercicios**: [Auditoría de Inmutabilidad](modulos/modulo_2/tema_2.1_subtema_2.1.1_ejercicios.md)
 
-### 🎼 TEMA 2.2: ORQUESTACIÓN (ZHENG / QI)
+#### 🎼 TEMA 2.2: ORQUESTACIÓN (ZHENG / QI)
 
 - 📘 **Teoría**: [El Método Directo y el Sorpresivo](modulos/modulo_2/tema_2.2_subtema_2.2.1_contenido.md)
   - _Aprenderás_: Cómo gastar tus Innovation Tokens sabiamente.
 - 🎮 **Simulación**: [Juego de Innovation Tokens](simulaciones/simulacion_m2_tokens.html)
 
-### 🔍 TEMA 2.3: FOCO Y SWARMING
+#### 🔍 TEMA 2.3: FOCO Y SWARMING
 
 - 📘 **Teoría**: [Atacar el Vacío (Deuda Técnica)](modulos/modulo_2/tema_2.3_subtema_2.3.1_contenido.md)
 - 🎮 **Ejercicios**: [Swarming en Debugging](modulos/modulo_2/tema_2.3_subtema_2.3.2_ejercicios.md)
@@ -164,7 +164,7 @@ Aprenderemos a diseñar para la desechabilidad y la concentración de fuerzas.
 
 ---
 
-# ⚙️ MÓDULO 3: OPERACIONES (LA MANIOBRA)
+# [⚙️ MÓDULO 3: OPERACIONES (LA MANIOBRA)](./modulos/modulo_3/presentacion_modulo.md)
 
 ## 📋 FICHA TÉCNICA
 
@@ -181,17 +181,17 @@ Aquí aprenderás a ver en la oscuridad (Observabilidad) y a reaccionar cuando t
 
 ## 🗺️ RUTA DE APRENDIZAJE
 
-### 🚩 TEMA 3.1: GESTIÓN DEL MOMENTUM
+#### 🚩 TEMA 3.1: GESTIÓN DEL MOMENTUM
 
 - 📘 **Teoría**: [Feature Flags Tácticas y MVPs](modulos/modulo_3/tema_3.1_subtema_3.1.2_contenido.md)
 - 🎮 **Ejercicios**: [Diseño de Kill Switches](modulos/modulo_3/tema_3.1_subtema_3.1.2_ejercicios.md)
 
-### 🔭 TEMA 3.2: INTELIGENCIA DE DATOS
+#### 🔭 TEMA 3.2: INTELIGENCIA DE DATOS
 
 - 📘 **Teoría**: [Métricas vs Realidad (El Mapa)](modulos/modulo_3/tema_3.2_subtema_3.2.1_contenido.md)
 - 🎮 **Ejercicios**: [Tracing Distribuido](modulos/modulo_3/tema_3.2_subtema_3.2.2_ejercicios.md)
 
-### 🌀 TEMA 3.3: ADAPTABILIDAD Y CAOS
+#### 🌀 TEMA 3.3: ADAPTABILIDAD Y CAOS
 
 - 📘 **Teoría**: [Chaos Engineering e Incident Response](modulos/modulo_3/tema_3.3_subtema_3.3.1_contenido.md)
 - 💻 **Simulación**: [La Consola del Chaos Monkey](simulaciones/simulacion_m3_chaos.html)
@@ -208,7 +208,7 @@ Aquí aprenderás a ver en la oscuridad (Observabilidad) y a reaccionar cuando t
 
 ---
 
-# 🏖️ MÓDULO 4: LIDERAZGO Y POLÍTICA (EL GENERAL)
+# [🏖️ MÓDULO 4: LIDERAZGO Y POLÍTICA (EL GENERAL)](./modulos/modulo_4/presentacion_modulo.md)
 
 ## 📋 FICHA TÉCNICA
 
@@ -225,17 +225,17 @@ Aprenderás a negociar, a cuidar a tu equipo (Benevolencia) y a exigir estándar
 
 ## 🗺️ RUTA DE APRENDIZAJE
 
-### 🧙 TEMA 4.1: LAS VIRTUDES DEL MANDO
+#### 🧙 TEMA 4.1: LAS VIRTUDES DEL MANDO
 
 - 📘 **Teoría**: [Sabiduría, Sinceridad, Benevolencia, Coraje](modulos/modulo_4/tema_4.1_subtema_4.1.1_contenido.md)
 - 🎮 **Simulación**: [Liderazgo RPG (Decisiones difíciles)](simulaciones/simulacion_m4_rpg.html)
 
-### 🤝 TEMA 4.2: NEGOCIACIÓN Y POLÍTICA
+#### 🤝 TEMA 4.2: NEGOCIACIÓN Y POLÍTICA
 
 - 📘 **Teoría**: [El Puente Dorado y Stakeholders](modulos/modulo_4/tema_4.2_subtema_4.2.2_contenido.md)
 - 🎮 **Ejercicios**: [Traducción Técnico-Negocio](modulos/modulo_4/tema_4.2_subtema_4.2.2_ejercicios.md)
 
-### 🕵️ TEMA 4.3: INTELIGENCIA ESTRATÉGICA
+#### 🕵️ TEMA 4.3: INTELIGENCIA ESTRATÉGICA
 
 - 📘 **Teoría**: [Los 5 Tipos de Espías (Información)](modulos/modulo_4/tema_4.3_subtema_4.3.1_contenido.md)
 
@@ -251,7 +251,7 @@ Aprenderás a negociar, a cuidar a tu equipo (Benevolencia) y a exigir estándar
 
 ---
 
-# 🎓 MÓDULO 5: TOOLKIT Y GRADUACIÓN
+# [🎓 MÓDULO 5: TOOLKIT Y GRADUACIÓN](./modulos/modulo_5/presentacion_modulo.md)
 
 ## 📋 FICHA TÉCNICA
 
@@ -268,13 +268,13 @@ Entrarás al "War Room" para salvar una empresa ficticia y escribirás tu propio
 
 ## 🗺️ RUTA DE MISIÓN
 
-### 🚨 TEMA 5.1: EL WAR ROOM (SIMULACIÓN FINAL)
+#### 🚨 TEMA 5.1: EL WAR ROOM (SIMULACIÓN FINAL)
 
 - 📘 **Briefing**: [Escenario "Black Friday Eve"](modulos/modulo_5/tema_5.1_contenido.md)
 - 🎮 **MISIÓN**: [Ejecutar la Simulación WAR ROOM](simulaciones/simulacion_m5_warroom.html)
   - _Reto_: Tienes 3 comandos para salvar la empresa. ¿Qué harás?
 
-### 📄 TEMA 5.2: TU DOCTRINA PERSONAL
+#### 📄 TEMA 5.2: TU DOCTRINA PERSONAL
 
 - 📘 **Guía**: [Construyendo tu Art of War](modulos/modulo_5/tema_5.2_contenido.md)
 - 📝 **Ejercicio**: [Escribir "The User Manual of Me"](modulos/modulo_5/tema_5.2_ejercicios.md)
