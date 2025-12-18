@@ -1,0 +1,263 @@
+{
+  "id": "teach-laoz-curso-sun-tzu-production",
+  "title": "Sun Tzu en Production: Estrategia para Ingeniería",
+  "description": "Curso avanzado para Ingenieros de Sistemas, Tech Leads y Arquitectos. Aprende a sistematizar la intuición y aplicar el Framework de Tres Vistas (Conceptual, Lógica, Ejecución) para resolver desafíos técnicos y organizacionales complejos.",
+  "modules": [
+    {
+      "modulo_id": 0,
+      "titulo": "Diagnóstico y Nivelación - Fundamentos Cognitivos",
+      "temas": [
+        {
+          "tema_id": "0.1",
+          "titulo": "El Ingeniero como Estratega Natural",
+          "subtemas": [
+            {
+              "subtema_id": "0.1.1",
+              "titulo": "De la Compilación a la Conquista"
+            },
+            {
+              "subtema_id": "0.1.2",
+              "titulo": "El Costo de la No-Estrategia"
+            }
+          ]
+        },
+        {
+          "tema_id": "0.2",
+          "titulo": "El Framework de Tres Vistas",
+          "subtemas": [
+            {
+              "subtema_id": "0.2.1",
+              "titulo": "Vista Conceptual"
+            },
+            {
+              "subtema_id": "0.2.2",
+              "titulo": "Vista Lógica"
+            },
+            {
+              "subtema_id": "0.2.3",
+              "titulo": "Vista de Ejecución"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modulo_id": 1,
+      "titulo": "Análisis y Planificación Estratégica",
+      "temas": [
+        {
+          "tema_id": "1.1",
+          "titulo": "El Modelo de 5-Factores",
+          "subtemas": [
+            {
+              "subtema_id": "1.1.1",
+              "titulo": "Tao (Propósito) y Clima (Timing)"
+            },
+            {
+              "subtema_id": "1.1.2",
+              "titulo": "Terreno, Liderazgo y Método"
+            }
+          ]
+        },
+        {
+          "tema_id": "1.2",
+          "titulo": "Economía del Cycle Time",
+          "subtemas": [
+            {
+              "subtema_id": "1.2.1",
+              "titulo": "El Costo de la Guerra Prolongada"
+            },
+            {
+              "subtema_id": "1.2.2",
+              "titulo": "Automatización como Multiplicador"
+            }
+          ]
+        },
+        {
+          "tema_id": "1.3",
+          "titulo": "Resolver en Capas",
+          "subtemas": [
+            {
+              "subtema_id": "1.3.1",
+              "titulo": "El Árbol de Decisión de Conflicto"
+            },
+            {
+              "subtema_id": "1.3.2",
+              "titulo": "Ganar por Diseño"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modulo_id": 2,
+      "titulo": "Arquitectura de Sistemas Estratégicos",
+      "temas": [
+        {
+          "tema_id": "2.1",
+          "titulo": "Diseño Anti-frágil",
+          "subtemas": [
+            {
+              "subtema_id": "2.1.1",
+              "titulo": "Defensa primero: Immutable Infrastructure"
+            },
+            {
+              "subtema_id": "2.1.2",
+              "titulo": "Capacidad de Error (Error Budgeting)"
+            }
+          ]
+        },
+        {
+          "tema_id": "2.2",
+          "titulo": "Orquestación (Momentum)",
+          "subtemas": [
+            {
+              "subtema_id": "2.2.1",
+              "titulo": "Direct Methods vs Indirect Methods"
+            },
+            {
+              "subtema_id": "2.2.2",
+              "titulo": "Momentum de Release"
+            }
+          ]
+        },
+        {
+          "tema_id": "2.3",
+          "titulo": "Sharding de Atención",
+          "subtemas": [
+            {
+              "subtema_id": "2.3.1",
+              "titulo": "Identificar Vacíos y Plenitudes"
+            },
+            {
+              "subtema_id": "2.3.2",
+              "titulo": "Concentración de Fuerza"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modulo_id": 3,
+      "titulo": "Operaciones y Tácticas",
+      "temas": [
+        {
+          "tema_id": "3.1",
+          "titulo": "Gestión del Momentum",
+          "subtemas": [
+            {
+              "subtema_id": "3.1.1",
+              "titulo": "Rutas Directas e Indirectas"
+            },
+            {
+              "subtema_id": "3.1.2",
+              "titulo": "El Arte del Desvío (Feature Flags)"
+            }
+          ]
+        },
+        {
+          "tema_id": "3.2",
+          "titulo": "9 Heurísticas de Incidencias",
+          "subtemas": [
+            {
+              "subtema_id": "3.2.1",
+              "titulo": "Clasificando la Anomalía"
+            },
+            {
+              "subtema_id": "3.2.2",
+              "titulo": "Protocolos de No ir"
+            }
+          ]
+        },
+        {
+          "tema_id": "3.3",
+          "titulo": "Logística Adaptativa",
+          "subtemas": [
+            {
+              "subtema_id": "3.3.1",
+              "titulo": "Lectura de Señales"
+            },
+            {
+              "subtema_id": "3.3.2",
+              "titulo": "Posicionamiento en Terreno Alto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modulo_id": 4,
+      "titulo": "Contextos Especiales y Crisis",
+      "temas": [
+        {
+          "tema_id": "4.1",
+          "titulo": "Los 6 Terrenos Organizacionales",
+          "subtemas": [
+            {
+              "subtema_id": "4.1.1",
+              "titulo": "Terrenos Dispersos a Mortales"
+            },
+            {
+              "subtema_id": "4.1.2",
+              "titulo": "Tácticas de Unificación"
+            }
+          ]
+        },
+        {
+          "tema_id": "4.2",
+          "titulo": "Gestión de Incendios",
+          "subtemas": [
+            {
+              "subtema_id": "4.2.1",
+              "titulo": "Firefighting Efectivo"
+            },
+            {
+              "subtema_id": "4.2.2",
+              "titulo": "Chaos Engineering"
+            }
+          ]
+        },
+        {
+          "tema_id": "4.3",
+          "titulo": "Sistemas de Inteligencia",
+          "subtemas": [
+            {
+              "subtema_id": "4.3.1",
+              "titulo": "Tipos de Agentes (Feedback Loops)"
+            },
+            {
+              "subtema_id": "4.3.2",
+              "titulo": "La Verdad del Enemigo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modulo_id": 5,
+      "titulo": "Playbook del Ingeniero Estratégico",
+      "temas": [
+        {
+          "tema_id": "5.1",
+          "titulo": "Integración de Patrones",
+          "subtemas": [
+            {
+              "subtema_id": "5.1.1",
+              "titulo": "El War Room Simulado"
+            }
+          ]
+        },
+        {
+          "tema_id": "5.2",
+          "titulo": "Toolkit Personalizado",
+          "subtemas": [
+            {
+              "subtema_id": "5.2.1",
+              "titulo": "Construyendo tu Art of War"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
